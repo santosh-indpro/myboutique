@@ -1,62 +1,62 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /things              ->  index
- * POST    /things              ->  create
- * GET     /things/:id          ->  show
- * PUT     /things/:id          ->  update
- * DELETE  /things/:id          ->  destroy
+ * GET     /users              ->  index
+ * POST    /users              ->  create
+ * GET     /users/:id          ->  show
+ * PUT     /users/:id          ->  update
+ * DELETE  /users/:id          ->  destroy
  */
 
 'use strict';
 
 var _ = require('lodash');
-var Thing = require('./thing.model');
+var User = require('./users.model');
 
-// Get list of things
+// Get list of users
 exports.index = function(req, res) {
-  Thing.find(function (err, things) {
+  User.find(function (err, users) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(things);
+    return res.status(200).json(users);
   });
 };
 
-// Get a single thing
+// Get a single user
 exports.show = function(req, res) {
-  Thing.findById(req.params.id, function (err, thing) {
+  User.findById(req.params.id, function (err, user) {
     if(err) { return handleError(res, err); }
-    if(!thing) { return res.status(404).send('Not Found'); }
-    return res.json(thing);
+    if(!user) { return res.status(404).send('Not Found'); }
+    return res.json(user);
   });
 };
 
-// Creates a new thing in the DB.
+// Creates a new user in the DB.
 exports.create = function(req, res) {
-  Thing.create(req.body, function(err, thing) {
+  User.create(req.body, function(err, user) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(thing);
+    return res.status(201).json(user);
   });
 };
 
-// Updates an existing thing in the DB.
+// Updates an existing user in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  Thing.findById(req.params.id, function (err, thing) {
+  User.findById(req.params.id, function (err, user) {
     if (err) { return handleError(res, err); }
-    if(!thing) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(thing, req.body);
+    if(!user) { return res.status(404).send('Not Found'); }
+    var updated = _.merge(user, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.status(200).json(thing);
+      return res.status(200).json(user);
     });
   });
 };
 
-// Deletes a thing from the DB.
+// Deletes a user from the DB.
 exports.destroy = function(req, res) {
-  Thing.findById(req.params.id, function (err, thing) {
+  User.findById(req.params.id, function (err, user) {
     if(err) { return handleError(res, err); }
-    if(!thing) { return res.status(404).send('Not Found'); }
-    thing.remove(function(err) {
+    if(!user) { return res.status(404).send('Not Found'); }
+    user.remove(function(err) {
       if(err) { return handleError(res, err); }
       return res.status(204).send('No Content');
     });

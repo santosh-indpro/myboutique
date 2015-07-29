@@ -7,7 +7,9 @@
 
 var Thing = require('../api/thing/thing.model');
 var ItemPosted = require('../api/itemPosted/itemPosted.model');
-
+var Users = require('../api/users/users.model');
+var Products = require('../api/products/products.model');
+var Transactions = require('../api/transactions/transactions.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -52,4 +54,63 @@ ItemPosted.find({}).remove(function(){
         email:"email-id2@test.com"
       }
   );
+});
+
+Users.find({}).remove(function(){
+    Users.create(
+        {
+            mobile: '9887771234',
+            fullname: 'Santosh K',
+            active: true
+        },
+        {
+            mobile: '9885671234',
+            fullname: 'Bineesh K',
+            active: true
+        }
+    );
+});
+
+Products.find({}).remove(function(){
+    Products.create(
+        {
+            userID: '',
+            name: "Test items",
+            description: "Test item description",
+            price: 100,
+            images : [],
+            location: "Test location",
+            email:"email-id@test.com",
+            datecreated: "2015-07-01",
+            publishStatus: true
+        }
+    );
+});
+
+Transactions.find({}).remove(function(){
+    Transactions.create(
+        {
+            userID: '',
+            addressL1: '56, Lav road',
+            addressL2: 'Indr',
+            city: 'Bangalore',
+            state: 'Karnataka',
+            country: 'India',
+            productsList: [
+                {
+                    productID: '',
+                    quantity: ''
+                },
+                {
+                    productID: '',
+                    quantity: ''
+                }
+            ],
+            totalCost: 300,
+            orderDate: "2015-07-01",
+            orderStatus: true,
+            paymentStatus: false,
+            paymentDate: ""
+        }
+    );
 });

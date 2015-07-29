@@ -3,10 +3,10 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var ThingSchema = new Schema({
-  name: String,
-  info: String,
+var UserSchema = new Schema({
+  mobile: String,
+  fullname: String,
   active: Boolean
 });
 
-module.exports = mongoose.model('Thing', ThingSchema);
+module.exports = mongoose.model('User', UserSchema);

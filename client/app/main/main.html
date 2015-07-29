@@ -32,6 +32,16 @@
   </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Users:</h1>
+            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="user in usersCollection">
+                <li><a href="#" tooltip="{{user.fullname}}">{{user.mobile}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <footer class="footer">
   <div class="container">
