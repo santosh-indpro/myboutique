@@ -1,4 +1,5 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<!--<div ng-include="'components/navbar/navbar.html'"></div>-->
+<ng-ui-header></ng-ui-header>
 
 <header class="hero-unit" id="banner">
   <div class="container">
@@ -18,6 +19,19 @@
     </div>
   </div>
 </div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Items:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="item in itemsCollection">
+        <li><a href="#" tooltip="{{item.description}}">{{item.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
 <footer class="footer">
   <div class="container">

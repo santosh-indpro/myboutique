@@ -6,6 +6,7 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
+var ItemPosted = require('../api/itemPosted/itemPosted.model');
 
 
 Thing.find({}).remove(function() {
@@ -28,4 +29,27 @@ Thing.find({}).remove(function() {
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
+});
+
+ItemPosted.find({}).remove(function(){
+  ItemPosted.create(
+      {
+        name: "Test items",
+        description: "Test item description",
+        price: 100,
+        images : [],
+        phone: "10234-5678-89",
+        location: "Test location",
+        email:"email-id@test.com"
+      },
+      {
+        name: "Test items 2",
+        description: "Test item description 2",
+        price: 200,
+        images : [],
+        phone: "10234-5678-89",
+        location: "Test location 2",
+        email:"email-id2@test.com"
+      }
+  );
 });
