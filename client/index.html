@@ -1,4 +1,4 @@
-<!doctype html>
+<html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -20,6 +20,7 @@
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
+
   </head>
   <body ng-app="myboutiqueApp" style="color: red">
     <!--[if lt IE 7]>
@@ -30,8 +31,8 @@
     <div ui-view=""></div>
 
     <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="../bower_components/es5-shim/es5-shim.js"></script>
+    <script src="../bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
@@ -50,14 +51,15 @@
         <!-- build:js(.tmp) app/app.js -->
         
         <script src="app/app.js"></script>
+        <script src="components/app.components.js"></script>
           <!-- injector:js -->
+          <script src="app/main/main.controller.js"></script>
+          <script src="app/main/main.js"></script>
+          <script src="components/app.components.js"></script>
           <script src="components/header/header.ctrl.js"></script>
           <script src="components/header/header.drct.js"></script>
           <script src="components/header/header.js"></script>
           <script src="components/modal/modal.service.js"></script>
-
-          <script src="app/main/main.controller.js"></script>
-          <script src="app/main/main.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

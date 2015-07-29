@@ -4,6 +4,6 @@ angular.module('header.drct', [])
     .directive('ngUiHeader', function () {
         return {
             restrict: 'E',
-            templateUrl: 'header/header.tpl.html'
+            templateUrl: 'components/header/header.tpl.html'
         };
     });

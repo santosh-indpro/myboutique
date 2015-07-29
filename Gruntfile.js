@@ -34,7 +34,7 @@ module.exports = function (grunt) {
     },
     express: {
       options: {
-        port: process.env.PORT || 9000
+        port: process.env.PORT || 3000
       },
       dev: {
         options: {
@@ -111,7 +111,7 @@ module.exports = function (grunt) {
           '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
-          livereload: false
+          livereload: true
         }
       },
       express: {
@@ -174,7 +174,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      js: [".tmp/**/*.js", ".tmp/**/*.map"]
     },
 
     // Add vendor prefixed styles
@@ -532,7 +533,7 @@ module.exports = function (grunt) {
                  
                  '!{.tmp,<%= yeoman.client %>}/app/app.js',               
                  '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
-                 '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'               
+                 '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'
                ]
             ]
         }
@@ -672,6 +673,19 @@ module.exports = function (grunt) {
       'test:client'
     ]);
   });
+
+  grunt.registerTask('removeAllJsFromTemp', function(){
+
+  });
+
+  grunt.registerTask('build-dev', [
+    'clean:dist',
+    'injector:sass',
+    'concurrent:dist',
+    'injector',
+    'wiredep',
+    'clean:js'
+  ]);
 
   grunt.registerTask('build', [
     'clean:dist',
