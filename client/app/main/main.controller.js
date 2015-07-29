@@ -3,7 +3,6 @@
 angular.module('myboutiqueApp')
   .controller('MainCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
-      alert(2);
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
