@@ -1,8 +1,16 @@
 'use strict';
 
 angular.module('productList.ctrl', [])
-    .controller('ProductListController', ['$scope', function ($scope) {
+    .controller('ProductListController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
-        $scope.fromController = 'Testing content rendered form ProductList controller';
+        $http.get(''.url('/api/products')).success(function(productsCollection) {
+            $scope.productsCollection = productsCollection;
+        });
+
+        $scope.showProductDetails = function(pageToRedirect, productId){
+            console.log("Product id - ", productId);
+            $rootScope.$broadcast('onNavigationLinkClicked', pageToRedirect);
+            $rootScope.$broadcast('onGetProductDetailsById', productId);
+        }
 
     }]);

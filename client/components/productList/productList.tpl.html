@@ -1,4 +1,10 @@
-<div ng-controller="ProductListController">
-    <h1>Product List</h1>
-    <h2>{{ fromController }}</h2>
+<div ng-controller="ProductListController" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Products:</h1>
+            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="product in productsCollection">
+                <li><a href="#" tooltip="{{product.description}}" ng-click="showProductDetails('productDetails', product._id)">{{product.name}}</a></li>
+            </ul>
+        </div>
+    </div>
 </div>

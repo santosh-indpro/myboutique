@@ -1,37 +1,37 @@
 'use strict';
 
 angular.module('myboutiqueApp')
-    .controller('MainCtrl', function ($scope, $http) {
-        $scope.awesomeThings = [];
+    .controller('MainCtrl', function ($scope, $rootScope, $http) {
 
         $scope.renderProductListing = false;
         $scope.renderOrderListing = false;
-
-        $http.get(''.url('/api/things')).success(function(awesomeThings) {
-            $scope.awesomeThings = awesomeThings;
-        })
-
-        $http.get(''.url('/api/products')).success(function(productsCollection) {
-            console.log('productsCollection', productsCollection);
-            $scope.productsCollection = productsCollection;
-        });
-
-        $http.get(''.url('/api/users')).success(function(usersCollection) {
-            console.log('usersCollection', usersCollection);
-            $scope.usersCollection = usersCollection;
-        });
-
-        $http.get(''.url('/api/transactions')).success(function(transactionsCollection) {
-            console.log('transactionsCollection', transactionsCollection);
-        });
+        $scope.renderProductDetails = false;
 
         $scope.$on('onNavigationLinkClicked', function (event, args) {
             if(args === 'productList'){
                 $scope.renderProductListing = !$scope.renderProductListing;
+                $scope.renderProductDetails = false;
                 $scope.renderOrderListing = false;
-            }else if(args === 'orderList'){
+            } else if(args === 'productDetails'){
+                $scope.renderProductDetails = !$scope.renderProductDetails;
                 $scope.renderProductListing = false;
-                $scope.renderOrderListing = !$scope.renderProductListing;
+                $scope.renderOrderListing = false;
+            } else if(args === 'orderList'){
+                $scope.renderOrderListing = !$scope.renderOrderListing;
+                $scope.renderProductListing = false;
+                $scope.renderProductDetails = false;
             }
         });
+
+        /*$scope.resetAllRendering = function (){
+
+        };*/
+
+        $scope.$on('onGetProductDetailsById', function (event, productId) {
+            $http.get(''.url('/api/products/' + productId)).success(function(productDetails) {
+                console.log("Product details - ", productDetails);
+                $scope.productDetails = productDetails;
+            });
+        });
+
     });

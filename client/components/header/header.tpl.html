@@ -1,8 +1,11 @@
-<div class="navbar-fixed-top" ng-controller="HeaderController">
+<header class="hero-unit" id="banner" ng-controller="HeaderController">
     <div class="container">
-        <div>
-            <label ng-click="onOptionClick('productList')">ProductList</label>
-            <label ng-click="onOptionClick('orderList')">OrderList</label>
-        </div>
-    </div><!--//container -->
-</div><!--//navbar-fixed-top -->
+        <h1>'Allo, 'Allo!</h1>
+        <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+        <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    </div>
+    <div>
+        <label ng-click="onOptionClick('productList')">ProductList</label>
+        <label ng-click="onOptionClick('orderList')">OrderList</label>
+    </div>
+</header>
