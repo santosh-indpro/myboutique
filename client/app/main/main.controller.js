@@ -15,6 +15,25 @@ angular.module('myboutiqueApp')
       $scope.itemsCollection = itemPostedCollection;
     });
 
+        $http.get('api/users').success(function(usersCollection) {
+
+            console.log('usersCollection', usersCollection);
+
+            $scope.usersCollection = usersCollection;
+        });
+
+        $http.get('api/products').success(function(productsCollection) {
+
+            console.log('productsCollection', productsCollection);
+
+        });
+
+        $http.get('api/transactions').success(function(transactionsCollection) {
+
+            console.log('transactionsCollection', transactionsCollection);
+
+        });
+
     $scope.addThing = function() {
     if($scope.newThing === '') {
       return;
