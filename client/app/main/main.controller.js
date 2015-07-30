@@ -8,30 +8,18 @@ angular.module('myboutiqueApp')
       $scope.awesomeThings = awesomeThings;
     });
 
-    $http.get(''.url('/api/itemPosted')).success(function(itemPostedCollection) {
+        $http.get(''.url('/api/products')).success(function(productsCollection) {
+            console.log('productsCollection', productsCollection);
+            $scope.productsCollection = productsCollection;
+        });
 
-      console.log('ItemPosted', itemPostedCollection);
-
-      $scope.itemsCollection = itemPostedCollection;
-    });
-
-        $http.get('api/users').success(function(usersCollection) {
-
+        $http.get(''.url('/api/users')).success(function(usersCollection) {
             console.log('usersCollection', usersCollection);
-
             $scope.usersCollection = usersCollection;
         });
 
-        $http.get('api/products').success(function(productsCollection) {
-
-            console.log('productsCollection', productsCollection);
-
-        });
-
-        $http.get('api/transactions').success(function(transactionsCollection) {
-
+        $http.get(''.url('/api/transactions')).success(function(transactionsCollection) {
             console.log('transactionsCollection', transactionsCollection);
-
         });
 
     $scope.addThing = function() {
