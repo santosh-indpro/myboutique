@@ -4,8 +4,14 @@ angular.module('myboutiqueApp')
   .controller('MainCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
 
+        alert(''.url('/api/things'));
     $http.get(''.url('/api/things')).success(function(awesomeThings) {
+        alert(awesomeThings.length);
       $scope.awesomeThings = awesomeThings;
+    }).error(function(data, status, headers, config){
+        console.log("Status ", status);
+        console.log("Headers ", headers);
+        console.log("Config ", config);
     });
 
     $http.get(''.url('/api/itemPosted')).success(function(itemPostedCollection) {
