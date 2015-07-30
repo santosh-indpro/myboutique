@@ -1,3 +1,5 @@
 angular.module('ui.components', [
-    'header'
+    'header',
+    'productList',
+    'orderList'
 ]);

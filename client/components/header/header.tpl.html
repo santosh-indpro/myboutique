@@ -1,5 +1,8 @@
 <div class="navbar-fixed-top" ng-controller="HeaderController">
     <div class="container">
-        <div>{{ fromController }}</div>
+        <div>
+            <label ng-click="onOptionClick('productList')">ProductList</label>
+            <label ng-click="onOptionClick('orderList')">OrderList</label>
+        </div>
     </div><!--//container -->
 </div><!--//navbar-fixed-top -->

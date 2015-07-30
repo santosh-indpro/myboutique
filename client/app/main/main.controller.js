@@ -1,18 +1,15 @@
 'use strict';
 
 angular.module('myboutiqueApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+    .controller('MainCtrl', function ($scope, $http) {
+        $scope.awesomeThings = [];
 
-        alert(''.url('/api/things'));
-    $http.get(''.url('/api/things')).success(function(awesomeThings) {
-        alert(awesomeThings.length);
-      $scope.awesomeThings = awesomeThings;
-    }).error(function(data, status, headers, config){
-        console.log("Status ", status);
-        console.log("Headers ", headers);
-        console.log("Config ", config);
-    });
+        $scope.renderProductListing = false;
+        $scope.renderOrderListing = false;
+
+        $http.get(''.url('/api/things')).success(function(awesomeThings) {
+            $scope.awesomeThings = awesomeThings;
+        })
 
         $http.get(''.url('/api/products')).success(function(productsCollection) {
             console.log('productsCollection', productsCollection);
@@ -28,15 +25,13 @@ angular.module('myboutiqueApp')
             console.log('transactionsCollection', transactionsCollection);
         });
 
-    $scope.addThing = function() {
-    if($scope.newThing === '') {
-      return;
-    }
-    //$http.post('/api/things', { name: $scope.newThing });
-    $scope.newThing = '';
-  };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-  });
+        $scope.$on('onNavigationLinkClicked', function (event, args) {
+            if(args === 'productList'){
+                $scope.renderProductListing = !$scope.renderProductListing;
+                $scope.renderOrderListing = false;
+            }else if(args === 'orderList'){
+                $scope.renderProductListing = false;
+                $scope.renderOrderListing = !$scope.renderProductListing;
+            }
+        });
+    });

@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('header.ctrl', [])
-    .controller('HeaderController', ['$scope', function ($scope) {
+    .controller('HeaderController', ['$scope', '$rootScope', function ($scope, $rootScope) {
 
-        $scope.fromController = 'Testing content rendered form header controller';
+        $scope.onOptionClick = function(args){
+            $rootScope.$broadcast('onNavigationLinkClicked', args);
+        }
 
     }]);
