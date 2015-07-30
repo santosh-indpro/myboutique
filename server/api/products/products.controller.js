@@ -16,6 +16,8 @@ var Product = require('./products.model');
 exports.index = function(req, res) {
   Product.find(function (err, products) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     return res.status(200).json(products);
   });
 };
@@ -65,4 +67,10 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.status(500).send(err);
+}
+
+function addCrossDomainHeader(res){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 }
