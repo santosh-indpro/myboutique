@@ -1,7 +1,7 @@
 <ng-ui-header></ng-ui-header>
 
-<ng-product-list ng-if="renderProductListing"></ng-product-list>
-<ng-product-dtls ng-if="renderProductDetails"></ng-product-dtls>
-<ng-order-list ng-if="renderOrderListing"></ng-order-list>
+<ng-product-list ng-if="renderPagesObj.productList"></ng-product-list>
+<ng-product-dtls ng-if="renderPagesObj.productDetails"></ng-product-dtls>
+<ng-order-list ng-if="renderPagesObj.orderList"></ng-order-list>
 
 <ng-ui-footer></ng-ui-footer>

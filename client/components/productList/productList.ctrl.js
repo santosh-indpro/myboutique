@@ -8,7 +8,6 @@ angular.module('productList.ctrl', [])
         });
 
         $scope.showProductDetails = function(pageToRedirect, productId){
-            console.log("Product id - ", productId);
             $rootScope.$broadcast('onNavigationLinkClicked', pageToRedirect);
             $rootScope.$broadcast('onGetProductDetailsById', productId);
         }

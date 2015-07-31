@@ -24,7 +24,6 @@ exports.index = function(req, res) {
 
 // Get a single product
 exports.show = function(req, res) {
-  console.log("Product id obj - ",req.params);
   Product.findById(req.params.id, function (err, product) {
     if(err) { return handleError(res, err); }
 
