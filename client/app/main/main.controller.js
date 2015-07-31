@@ -3,26 +3,25 @@
 angular.module('myboutiqueApp')
     .controller('MainCtrl', function ($scope, $rootScope, $http) {
 
-        // Initialize
-        $scope.productDetails = {};
-
         // Initialize page render object
         $scope.renderPagesObj = {
+            mainMenu: false,
             productList: false,
             productDetails: false,
+            productCreate: false,
             orderList: false
         };
 
         // Start Page
-        openSelectedPage('productList');
+        renderSelectedPage('productList');
 
         // Navigate to selected page
         $scope.$on('onNavigationLinkClicked', function (event, args) {
-            openSelectedPage(args);
+            renderSelectedPage(args);
         });
 
         // Function to navigate to selected page
-        function openSelectedPage(selectedPage){
+        function renderSelectedPage(selectedPage){
             for (var prop in $scope.renderPagesObj) {
                 if ($scope.renderPagesObj.hasOwnProperty(prop) && selectedPage === prop) {
                     $scope.renderPagesObj[prop] = !$scope.renderPagesObj[prop];
