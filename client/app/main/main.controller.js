@@ -2,14 +2,18 @@
 
 angular.module('myboutiqueApp')
     .controller('MainCtrl', function ($scope, $http) {
-        $scope.awesomeThings = [];
 
-        $scope.renderProductListing = false;
-        $scope.renderOrderListing = false;
+        // Initialize page render object
+        $scope.renderPagesObj = {
+            mainMenu: false,
+            productList: false,
+            productDetails: false,
+            productCreate: false,
+            orderList: false
+        };
 
-        $http.get(''.url('/api/things')).success(function(awesomeThings) {
-            $scope.awesomeThings = awesomeThings;
-        })
+        // Start Page
+        renderSelectedPage('productList');
 
         // Navigate to selected page
         $scope.$on('onNavigationLinkClicked', function (event, args) {
