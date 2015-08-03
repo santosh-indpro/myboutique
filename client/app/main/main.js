@@ -11,10 +11,10 @@ angular.module('myboutiqueApp')
   }).directive('ngDropZone', function () {
 
         function link(scope, element, attrs) {
-            console.log('Attrs : ', attrs.ngDropZone);
-            $(element).html('<div id="' + attrs.ngDropZone + '"><span>Drop Files here</span></div>');
+            // Add dropzone
+            $(element).html('<div class="dropzone" id="' + attrs.ngDropZone + '"></div>');
 
-            // Dropzone class:
+            // Init Dropzone
             var myDropzone = new Dropzone("div#" + attrs.ngDropZone, { url: "/images"});
         }
 

@@ -24,7 +24,7 @@ exports.show = function(req, res) {
 
 // Creates a new user in the DB.
 exports.create = function(req, res, uploadPath) {
-
+    console.log("Request file object before write", req.files);
     fs.readFile(req.files.file.path, function (err, data) {
         var fileName = guid();
         var newPath = uploadPath + fileName;
