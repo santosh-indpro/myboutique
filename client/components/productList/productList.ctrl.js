@@ -1,9 +1,16 @@
 'use strict';
 
 angular.module('productList.ctrl', [])
-    .controller('ProductListController', ['$scope', function ($scope) {
+    .controller('ProductListController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
-        $scope.fromController = 'Testing content rendered form ProductList controller';
+        $http.get(''.url('/api/products')).success(function(productsCollection) {
+            $scope.productsCollection = productsCollection;
+        });
+
+        $scope.showProductDetails = function(pageToRedirect, productId){
+            $rootScope.$broadcast('onNavigationLinkClicked', pageToRedirect);
+            $rootScope.$broadcast('onGetProductDetailsById', productId);
+        }
 
         $scope.imageAdded = ["http://localhost:3000/6c6c4d01-929c-e694-92f4-9abe7cf705bc.jpg"];
         $scope.onAddImage = function(){

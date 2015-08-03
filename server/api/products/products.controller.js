@@ -26,6 +26,8 @@ exports.index = function(req, res) {
 exports.show = function(req, res) {
   Product.findById(req.params.id, function (err, product) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     if(!product) { return res.status(404).send('Not Found'); }
     return res.json(product);
   });
@@ -35,6 +37,8 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Product.create(req.body, function(err, product) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     return res.status(201).json(product);
   });
 };

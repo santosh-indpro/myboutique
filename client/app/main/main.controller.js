@@ -4,40 +4,34 @@ angular.module('myboutiqueApp')
     .controller('MainCtrl', function ($scope, $http) {
         $scope.awesomeThings = [];
 
-        console.log('This is from Controller');
-
-        $scope.renderProductListing = true;
+        $scope.renderProductListing = false;
         $scope.renderOrderListing = false;
 
         $http.get(''.url('/api/things')).success(function(awesomeThings) {
             $scope.awesomeThings = awesomeThings;
-        });
+        })
 
-        $http.get(''.url('/api/products')).success(function(productsCollection) {
-            console.log('productsCollection', productsCollection);
-            $scope.productsCollection = productsCollection;
-        });
-
-        $http.get(''.url('/api/users')).success(function(usersCollection) {
-            console.log('usersCollection', usersCollection);
-            $scope.usersCollection = usersCollection;
-        });
-
-        $http.get(''.url('/api/transactions')).success(function(transactionsCollection) {
-            console.log('transactionsCollection', transactionsCollection);
-        });
-
+        // Navigate to selected page
         $scope.$on('onNavigationLinkClicked', function (event, args) {
-            if(args === 'productList'){
-                $scope.renderProductListing = !$scope.renderProductListing;
-                $scope.renderOrderListing = false;
-            }else if(args === 'orderList'){
-                $scope.renderProductListing = false;
-                $scope.renderOrderListing = !$scope.renderProductListing;
-            }
+            renderSelectedPage(args);
         });
 
-        setTimeout(function(){
-            console.log('This is from Controller SetTimeout');
-        }, 3000);
+        // Function to navigate to selected page
+        function renderSelectedPage(selectedPage){
+            for (var prop in $scope.renderPagesObj) {
+                if ($scope.renderPagesObj.hasOwnProperty(prop) && selectedPage === prop) {
+                    $scope.renderPagesObj[prop] = !$scope.renderPagesObj[prop];
+                } else {
+                    $scope.renderPagesObj[prop] = false;
+                }
+            }
+        }
+
+        // Get Product Details By Id
+        $scope.$on('onGetProductDetailsById', function (event, productId) {
+            $http.get(''.url('/api/products/' + productId)).success(function(productDetails) {
+                $scope.productDetails = productDetails;
+            });
+        });
+
     });

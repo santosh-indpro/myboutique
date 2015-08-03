@@ -1,0 +1,23 @@
+<div ng-controller="productCreateController">
+    <h2>Create Item</h2>
+    <ul>
+        <li>
+            Location: <input type="text" ng-model="productDetails.location" />
+        </li>
+        <li>
+            Product name: <input type="text" ng-model="productDetails.name" />
+        </li>
+        <li>
+            Price: <input type="text" ng-model="productDetails.price" />
+        </li>
+        <li>
+            Upload Photo:
+        </li>
+        <li>
+            Description: <input type="text" ng-model="productDetails.description" />
+        </li>
+    </ul>
+    <div>
+        <button ng-click="createProduct()">Create</button>
+    </div>
+</div>

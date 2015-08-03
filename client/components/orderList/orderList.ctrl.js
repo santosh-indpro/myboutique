@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('orderList.ctrl', [])
-    .controller('OrderListController', ['$scope', function ($scope) {
+    .controller('OrderListController', ['$scope', '$http', function ($scope, $http) {
 
-        $scope.fromController = 'Testing content rendered form OrderList controller';
+        $http.get(''.url('/api/transactions')).success(function(orderListCollection) {
+            $scope.orderListCollection = orderListCollection;
+        });
 
     }]);

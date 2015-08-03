@@ -1,56 +1,9 @@
-<!--<div ng-include="'components/navbar/navbar.html'"></div>-->
 <ng-ui-header></ng-ui-header>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
+<ng-ui-main-menu ng-if="renderPagesObj.mainMenu"></ng-ui-main-menu>
+<ng-product-list ng-if="renderPagesObj.productList"></ng-product-list>
+<ng-product-dtls ng-if="renderPagesObj.productDetails"></ng-product-dtls>
+<ng-product-create ng-if="renderPagesObj.productCreate"></ng-product-create>
+<ng-order-list ng-if="renderPagesObj.orderList"></ng-order-list>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Products:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="product in productsCollection">
-        <li><a href="#" tooltip="{{product.description}}">{{product.name}}</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Users:</h1>
-            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="user in usersCollection">
-                <li><a href="#" tooltip="{{user.fullname}}">{{user.mobile}}</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
-<ng-product-list ng-if="renderProductListing"></ng-product-list>
-<ng-order-list ng-if="renderOrderListing"></ng-order-list>
-
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.1.0 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
-</footer>
+<ng-ui-footer></ng-ui-footer>

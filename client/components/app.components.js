@@ -1,5 +1,9 @@
 angular.module('ui.components', [
     'header',
+    'mainMenu',
     'productList',
-    'orderList'
+    'productDtls',
+    'productCreate',
+    'orderList',
+    'footer'
 ]);
