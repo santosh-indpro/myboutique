@@ -1,4 +1,10 @@
 <div ng-controller="ProductListController">
     <h1>Product List</h1>
     <h2>{{ fromController }}</h2>
+    <button ng-click="onAddImage()">Add image</button>
+    <div ng-repeat="img in imageAdded">
+        <label>{{ img }}</label>
+        <img src="{{ img }}" />
+    </div>
+    <!--<img src="http://localhost:3000/api/productImage/55bb7c81a550e69d41802ed0">-->
 </div>

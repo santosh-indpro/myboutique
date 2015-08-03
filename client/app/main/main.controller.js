@@ -4,12 +4,14 @@ angular.module('myboutiqueApp')
     .controller('MainCtrl', function ($scope, $http) {
         $scope.awesomeThings = [];
 
-        $scope.renderProductListing = false;
+        console.log('This is from Controller');
+
+        $scope.renderProductListing = true;
         $scope.renderOrderListing = false;
 
         $http.get(''.url('/api/things')).success(function(awesomeThings) {
             $scope.awesomeThings = awesomeThings;
-        })
+        });
 
         $http.get(''.url('/api/products')).success(function(productsCollection) {
             console.log('productsCollection', productsCollection);
@@ -34,4 +36,8 @@ angular.module('myboutiqueApp')
                 $scope.renderOrderListing = !$scope.renderProductListing;
             }
         });
+
+        setTimeout(function(){
+            console.log('This is from Controller SetTimeout');
+        }, 3000);
     });

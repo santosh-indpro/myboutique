@@ -9,6 +9,7 @@ var Thing = require('../api/thing/thing.model');
 var Users = require('../api/users/users.model');
 var Products = require('../api/products/products.model');
 var Transactions = require('../api/transactions/transactions.model');
+var ProductImage = require('../api/productImage/productImage.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -90,3 +91,14 @@ Transactions.find({}).remove(function(){
         }
     );
 });
+
+/*
+ProductImage.find({}).remove(function(){
+
+    ProductImage.create({
+        id: '1',
+        image: null
+    })
+
+});
+*/
