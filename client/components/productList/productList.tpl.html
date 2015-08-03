@@ -7,6 +7,10 @@
             </ul>
         </div>
     </div>
+
+    <!--Web upload-->
+    <div ng-drop-zone="uploadImagesDZ"></div>
+
     <button ng-click="onAddImage()">Add image</button>
     <div ng-repeat="img in imageAdded">
         <label>{{ img }}</label>
