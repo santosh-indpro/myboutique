@@ -17,9 +17,9 @@ angular.module('productList.ctrl', [])
 
             try{
                 // Upload image to server
-                var upload = function (imageURI) {
+                var upload = function (imageURI, index) {
 
-                    $scope.imageAdded.push('PLACEHOLDER');
+                    $scope.imageAdded.push({key : 'PLACEHOLDER' + index, value: ''});
                     $scope.$apply();
 
                     var ft = new FileTransfer(),
@@ -39,18 +39,17 @@ angular.module('productList.ctrl', [])
 
                             setTimeout(function(index){
 
+                                var imagePlacedInCycle = false;
                                 angular.forEach($scope.imageAdded, function(value, key) {
-
-                                    if(value == 'PLACEHOLDER')
+                                    if(value.value === '' && imagePlacedInCycle === false)
                                     {
-                                        $scope.imageAdded[key] = 'http://localhost:3000/' + res.response;
+                                        imagePlacedInCycle = true;
+                                        $scope.imageAdded[key].value = 'http://localhost:3000/' + res.response;
                                     }
                                 });
                                 $scope.$apply();
 
-                                console.log("ImageCollection", angular.stringify($scope.imageAdded));
-
-                            }, 5000);
+                            }, 10000);
                         },
                         function (e) {
                             console.log("Upload failed");
@@ -61,7 +60,7 @@ angular.module('productList.ctrl', [])
                     function(results) {
                         for (var i = 0; i < results.length; i++) {
                             console.log('Image URI: ' + results[i]);
-                            upload(results[i]);
+                            upload(results[i],i);
                         }
                     }, function (error) {
                         console.log('Error: ' + error);

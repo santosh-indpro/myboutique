@@ -10,6 +10,11 @@
     <button ng-click="onAddImage()">Add image</button>
     <div ng-repeat="img in imageAdded">
         <label>{{ img }}</label>
-        <img style="width: 25%; height: 25%" src="{{ img }}" />
+        <div ng-if="img.value === ''">
+            <img src="assets/images/preloader.gif">
+        </div>
+        <div ng-if="img.value !== ''">
+            <img style="width: 100%;" src="{{ img.value }}" />
+        </div>
     </div>
 </div>
