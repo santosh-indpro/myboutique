@@ -44,6 +44,7 @@ server.listen(config.port, config.ip, function () {
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 app.post('/images', multipartMiddleware, function(req, resp) {
+
 	var productImageController = require('./api/productImage/productImage.controller');// don't forget to delete all req.files when done
 	productImageController.create(req, resp, uploadPath);
 });

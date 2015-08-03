@@ -15,7 +15,7 @@ angular.module('myboutiqueApp')
             $(element).html('<div id="' + attrs.ngDropZone + '"><span>Drop Files here</span></div>');
 
             // Dropzone class:
-            var myDropzone = new Dropzone("div#" + attrs.ngDropZone, { url: "/file/post"});
+            var myDropzone = new Dropzone("div#" + attrs.ngDropZone, { url: "/images"});
         }
 
         return {
