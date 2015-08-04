@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href=".">
-    <title></title>
+    <title>My Boutique</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -15,15 +15,31 @@
       <!-- bower:css -->
       <!-- endbower -->
     <!-- endbuild -->
+
     <!-- build:css({.tmp,client}) app/app.css -->
-    <link rel="stylesheet" href="app/app.css">
-    <link rel="stylesheet" href="../.tmp/app/app.css">
+
+    <!-- MyBoutique: Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- MyBoutique: Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!--<link rel="stylesheet" href="app/app.css">
+    <link rel="stylesheet" href="../.tmp/app/app.css">-->
+
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
 
-    <!-- Dropzone CSS -->
+    <!-- Dropzone JS / CSS -->
     <link rel="stylesheet" href="plugins/dropzone/dropzone.css">
+    <script src="plugins/dropzone/dropzone.js"></script>
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
 
   </head>
   <body ng-app="myboutiqueApp">
@@ -38,6 +54,7 @@
     <script src="../bower_components/es5-shim/es5-shim.js"></script>
     <script src="../bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
+
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -51,28 +68,23 @@
       <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- Dropzone JS -->
-    <script src="plugins/dropzone/dropzone.js"></script>
+    <!-- MyBoutique: Bootstrap Lib -->
+    <script src="assets/js/bootstrap.min.js"></script>
 
         <!-- build:js(.tmp) app/app.js -->
-        
         <script src="app/app.js"></script>
         <script src="components/app.components.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- MyBoutique: Cordova Lib -->
+    <script type="text/javascript" src="cordova.js"></script>
 
           <!-- injector:js -->
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
-          <script src="components/Footer/footer.ctrl.js"></script>
-          <script src="components/Footer/footer.drct.js"></script>
-          <script src="components/Footer/footer.js"></script>
           <script src="components/app.components.js"></script>
           <script src="components/header/header.ctrl.js"></script>
           <script src="components/header/header.drct.js"></script>
           <script src="components/header/header.js"></script>
-          <script src="components/mainMenu/mainMenu.ctrl.js"></script>
-          <script src="components/mainMenu/mainMenu.drct.js"></script>
-          <script src="components/mainMenu/mainMenu.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/orderList/orderList.ctrl.js"></script>
           <script src="components/orderList/orderList.drct.js"></script>
@@ -91,4 +103,3 @@
 
 </body>
 </html>
-x

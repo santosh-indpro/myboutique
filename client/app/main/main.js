@@ -16,18 +16,10 @@ angular.module('myboutiqueApp')
 
             // Init Dropzone
             var myDropzone = new Dropzone("div#" + attrs.ngDropZone, { url: "/images"});
-
-            // Config
-            /*Dropzone.options.myAwesomeDropzone = {
-                paramName: "file", // The name that will be used to transfer the file
-                maxFilesize: 2, // MB
-                accept: function(file, done) {
-                    if (file.name == "justinbieber.jpg") {
-                        done("Naha, you don't.");
-                    }
-                    else { done(); }
-                }
-            };*/
+            myDropzone.on("success", function(param1, uploadedfileName) {
+                scope.$root.imageAdded.push(uploadedfileName);
+                console.log("File uploaded obj filesNamesCollection: ",scope.$root.imageAdded);
+            });
         }
 
         return {

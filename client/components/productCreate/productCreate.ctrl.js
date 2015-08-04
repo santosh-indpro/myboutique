@@ -18,7 +18,13 @@ angular.module('productCreate.ctrl', [])
 
         // Create Product
         $scope.createProduct = function(){
+            console.log('createProduct');
+
+            // Collection from Web/Mobile
+            $scope.productDetails.images = $rootScope.imageAdded;
+
             $http.post(''.url('/api/products/'), $scope.productDetails).success(function(status) {
+                $rootScope.imageAdded = [];
                 $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
             }).error(function(status) {
                 console.log('Error - ',status);
@@ -59,6 +65,7 @@ angular.module('productCreate.ctrl', [])
                                     {
                                         imagePlacedInCycle = true;
                                         $scope.imageAdded[key].value = 'http://localhost:3000/' + res.response;
+                                        $rootScope.imageAdded.push(res.response);
                                     }
                                 });
                                 $scope.$apply();

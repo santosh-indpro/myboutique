@@ -9,7 +9,6 @@ var Thing = require('../api/thing/thing.model');
 var Users = require('../api/users/users.model');
 var Products = require('../api/products/products.model');
 var Transactions = require('../api/transactions/transactions.model');
-var ProductImage = require('../api/productImage/productImage.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -49,7 +48,7 @@ Users.find({}).remove(function(){
 });
 
 Products.find({}).remove(function(){
-    Products.create(
+    /*Products.create(
         {
             userID: '',
             name: "Test items",
@@ -61,7 +60,7 @@ Products.find({}).remove(function(){
             datecreated: "2015-07-01",
             publishStatus: true
         }
-    );
+    );*/
 });
 
 Transactions.find({}).remove(function(){
@@ -92,13 +91,3 @@ Transactions.find({}).remove(function(){
     );
 });
 
-/*
-ProductImage.find({}).remove(function(){
-
-    ProductImage.create({
-        id: '1',
-        image: null
-    })
-
-});
-*/

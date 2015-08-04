@@ -1,43 +1,68 @@
-<div ng-controller="productCreateController">
-    <h2>Create Item</h2>
-    <ul>
-        <li>
-            Location: <input type="text" ng-model="productDetails.location" />
-        </li>
-        <li>
-            Product name: <input type="text" ng-model="productDetails.name" />
-        </li>
-        <li>
-            Price: <input type="text" ng-model="productDetails.price" />
-        </li>
-        <li>
-            Upload Photo:
+<div ng-controller="productCreateController" class="container">
 
-            <!-- Start: Web upload-->
-            <div ng-if="!onPhone" ng-drop-zone="uploadImagesDZ"></div>
-            <!-- End: Web upload-->
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
-            <!-- Start: Mobile upload-->
-            <div ng-if="onPhone">
-                <button ng-click="onAddImage()">Add image</button>
-                <div ng-repeat="img in imageAdded">
-                    <label>{{ img }}</label>
-                    <div ng-if="img.value === ''">
-                        <img src="assets/images/preloader.gif">
-                    </div>
-                    <div ng-if="img.value !== ''">
-                        <img style="width: 100%;" src="{{ img.value }}" />
-                    </div>
-                </div>
+            <div class="placeOrderH">
+                <ul>
+                    <li>
+                        <label>Your mobile number:</label>
+                        988 008 9876
+                    </li>
+                    <li>
+                        <label>Email:</label>
+                        test@gmail.com
+                    </li>
+                    <li>
+                        <label>Location:</label>
+                        <input ng-model="productDetails.location" type="text">
+                    </li>
+                    <li>
+                        <label>Product name:</label>
+                        <input ng-model="productDetails.name" type="text">
+                    </li>
+                    <li>
+                        <label>Price:</label>
+                        <input ng-model="productDetails.price" type="text">
+                    </li>
+                    <li>
+                        <label>Upload photo:</label>
+                        <!-- Start: Web upload-->
+                        <div ng-if="!onPhone" ng-drop-zone="uploadImagesDZ"></div>
+                        <!-- End: Web upload-->
+                        <!-- Start: Mobile upload-->
+                        <div ng-if="onPhone">
+                            <button ng-click="onAddImage()">Add image</button>
+                            <div ng-repeat="img in imageAdded">
+                                <label>{{ img }}</label>
+                                <div ng-if="img.value === ''">
+                                    <img src="assets/images/preloader.gif">
+                                </div>
+                                <div ng-if="img.value !== ''">
+                                    <img style="width: 100%;" src="{{ img.value }}" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: Mobile upload-->
+                    </li>
+                    <li>
+                        <label>Description:</label>
+                        <textarea ng-model="productDetails.description" rows="4" cols="50"></textarea>
+                    </li>
+                </ul>
             </div>
-            <!-- End: Mobile upload-->
 
-        </li>
-        <li>
-            Description: <input type="text" ng-model="productDetails.description" />
-        </li>
-    </ul>
-    <div>
-        <button ng-click="createProduct()">Create</button>
+        </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
+    </div><!-- //row -->
+
+    <div class="container-fluid text-center footer">
+        <button ng-click="createProduct()" type="button" class="btnV1">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            Create
+        </button>
     </div>
-</div>
+
+</div><!-- //container -->
+
+<footer class="navbar-fixed-bottom">
+</footer>

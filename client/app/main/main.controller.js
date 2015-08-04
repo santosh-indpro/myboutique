@@ -5,14 +5,21 @@ angular.module('myboutiqueApp')
 
         // Initialize page render object
         $scope.renderPagesObj = {
-            mainMenu: false,
             productList: false,
             productDetails: false,
             productCreate: false,
             orderList: false
         };
 
+        // Initialize Uploaded images collection
+        $rootScope.imageAdded = [];
+
+        // Detect phone
         $rootScope.onPhone = false;
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            $rootScope.onPhone = true;
+        }
 
         // Start Page
         renderSelectedPage('productList');
@@ -39,12 +46,5 @@ angular.module('myboutiqueApp')
                 $scope.productDetails = productDetails;
             });
         });
-
-        document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
-            $rootScope.onPhone = true;
-            alert($rootScope.onPhone);
-            console.log("console.log works well");
-        }
 
     }]);

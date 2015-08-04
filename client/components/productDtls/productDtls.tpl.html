@@ -12,6 +12,9 @@
         </li>
         <li>
             Show Photos:
+            <div ng-repeat="img in productDetails.images">
+                <img style="width: 100%;" src="{{ img }}" />
+            </div>
         </li>
         <li>
             Description: {{ productDetails.description }}

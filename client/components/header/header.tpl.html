@@ -1,3 +1,4 @@
+<!--
 <header class="hero-unit" id="banner" ng-controller="HeaderController">
     <div class="container">
         <h1>'Allo, 'Allo!</h1>
@@ -8,3 +9,34 @@
         <label ng-click="onOptionClick('orderList')">OrderList</label>
     </div>
 </header>
+-->
+
+<header ng-controller="HeaderController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#">My Boutique</a>
+
+            <a class="cartBtn" href="#">
+                  <span class="glyphicon glyphicon-shopping-cart relative">
+                      <span class="cartNumbers">2</span>
+                  </span>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a ng-click="onOptionClick('productCreate')" href="#">Create item</a></li>
+                <li><a href="#">My products</a></li>
+                <li><a href="#">My profile</a></li>
+                <li><a href="#">Terms of use</a></li>
+                <li><a ng-click="onOptionClick('productList')" href="#">Back to Products List</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
