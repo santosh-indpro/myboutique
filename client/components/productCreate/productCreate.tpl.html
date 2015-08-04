@@ -14,18 +14,20 @@
             Upload Photo:
 
             <!-- Start: Web upload-->
-            <div ng-drop-zone="uploadImagesDZ"></div>
+            <div ng-if="!onPhone" ng-drop-zone="uploadImagesDZ"></div>
             <!-- End: Web upload-->
 
             <!-- Start: Mobile upload-->
-            <button ng-click="onAddImage()">Add image</button>
-            <div ng-repeat="img in imageAdded">
-                <label>{{ img }}</label>
-                <div ng-if="img.value === ''">
-                    <img src="assets/images/preloader.gif">
-                </div>
-                <div ng-if="img.value !== ''">
-                    <img style="width: 100%;" src="{{ img.value }}" />
+            <div ng-if="onPhone">
+                <button ng-click="onAddImage()">Add image</button>
+                <div ng-repeat="img in imageAdded">
+                    <label>{{ img }}</label>
+                    <div ng-if="img.value === ''">
+                        <img src="assets/images/preloader.gif">
+                    </div>
+                    <div ng-if="img.value !== ''">
+                        <img style="width: 100%;" src="{{ img.value }}" />
+                    </div>
                 </div>
             </div>
             <!-- End: Mobile upload-->

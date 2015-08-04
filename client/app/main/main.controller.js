@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myboutiqueApp')
-    .controller('MainCtrl', function ($scope, $http) {
+    .controller('MainCtrl', ['$scope', '$http', '$rootScope',function ($scope, $http, $rootScope) {
 
         // Initialize page render object
         $scope.renderPagesObj = {
@@ -11,6 +11,8 @@ angular.module('myboutiqueApp')
             productCreate: false,
             orderList: false
         };
+
+        $rootScope.onPhone = false;
 
         // Start Page
         renderSelectedPage('productList');
@@ -38,4 +40,11 @@ angular.module('myboutiqueApp')
             });
         });
 
-    });
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            $rootScope.onPhone = true;
+            alert($rootScope.onPhone);
+            console.log("console.log works well");
+        }
+
+    }]);
