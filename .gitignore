@@ -1,7 +1,9 @@
 .idea
 node_modules
-bower_components
+client/bower_components
 dist
 e2e
 .tmp
 .sass-cache
+server/uploads
+npm-debug.log
