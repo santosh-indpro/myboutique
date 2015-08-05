@@ -18,8 +18,6 @@ angular.module('productCreate.ctrl', [])
 
         // Create Product
         $scope.createProduct = function(){
-            console.log('createProduct');
-
             // Collection from Web/Mobile
             $scope.productDetails.images = $rootScope.imageAdded;
 
