@@ -1,4 +1,5 @@
 angular.module('header', [
     'header.ctrl',
-    'header.drct'
+    'header.drct',
+    'menu.drct'
 ]);

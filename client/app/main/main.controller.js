@@ -43,7 +43,15 @@ angular.module('myboutiqueApp')
         // Get Product Details By Id
         $scope.$on('onGetProductDetailsById', function (event, productId) {
             $http.get(''.url('/api/products/' + productId)).success(function(productDetails) {
+                $scope.productImagesForCarousel = [];
                 $scope.productDetails = productDetails;
+                angular.forEach($scope.productDetails.images, function(value, key) {
+                    $scope.productImagesForCarousel.push({
+                        key: key,
+                        name: value,
+                        first: (key === 0)?(true):(false)
+                    });
+                });
             });
         });
 
