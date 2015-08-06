@@ -33,13 +33,15 @@
                         <!-- Start: Mobile upload-->
                         <div ng-if="onPhone">
                             <button ng-click="onAddImage()">Add image</button>
-                            <div ng-repeat="img in imageAdded">
-                                <label>{{ img }}</label>
-                                <div ng-if="img.value === ''">
-                                    <img src="assets/images/preloader.gif">
-                                </div>
-                                <div ng-if="img.value !== ''">
-                                    <img style="width: 100%;" src="{{ img.value }}" />
+                            <div class="clearfix">
+                                <div ng-repeat="img in imageAdded">
+
+                                    <div ng-if="img.value === ''" style="width: 100px; height: 100px; overflow: hidden; float: left; margin: 0 12px 12px 0">
+                                        <img src="assets/images/preloader.gif">
+                                    </div>
+                                    <div ng-if="img.value !== ''" style="width: 100px; height: 100px; overflow: hidden; float: left; margin: 0 12px 12px 0">
+                                        <img style="width: 100%;" src="{{ img.value }}" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -19,6 +19,12 @@ angular.module('productCreate.ctrl', [])
         // Create Product
         $scope.createProduct = function(){
             // Collection from Web/Mobile
+
+            console.log("ADDED IMAGES >>>>> ");
+            for(var i=0; i < $rootScope.imageAdded.length; i++){
+                console.log($rootScope.imageAdded[i]);
+            }
+
             $scope.productDetails.images = $rootScope.imageAdded;
 
             $http.post(''.url('/api/products/'), $scope.productDetails).success(function(status) {
@@ -53,22 +59,20 @@ angular.module('productCreate.ctrl', [])
 
                     var c = ft.upload(imageURI, clientAppConfiguration.serverApiBaseURL + "/images",
                         function (res) {
-                            console.log('http://localhost:3000/' + res.response);
 
                             setTimeout(function(index){
-
                                 var imagePlacedInCycle = false;
                                 angular.forEach($scope.imageAdded, function(value, key) {
                                     if(value.value === '' && imagePlacedInCycle === false)
                                     {
                                         imagePlacedInCycle = true;
-                                        $scope.imageAdded[key].value = 'http://localhost:3000/' + res.response;
+                                        $scope.imageAdded[key].value = clientAppConfiguration.serverApiBaseURL + '/' + res.response;
                                         $rootScope.imageAdded.push(res.response);
                                     }
                                 });
                                 $scope.$apply();
 
-                            }, 10000);
+                            }, 1000);
                         },
                         function (e) {
                             console.log("Upload failed");
