@@ -19,6 +19,7 @@ angular.module('myboutiqueApp')
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
             $rootScope.onPhone = true;
+            console.log("Device is ready!");
         }
 
         // Start Page
