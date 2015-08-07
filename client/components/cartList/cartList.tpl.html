@@ -9,7 +9,7 @@
 
             <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="cartH clearfix">
                 <div class="imgH">
-                    <img src="{{ cartProduct.images[0] }}"/>
+                    <img src="{{  clientAppConfiguration.serverApiBaseURL + '/' + cartProduct.images[0] }}"/>
                 </div><!-- //imgH -->
                 <div class="textH">
                     <h1>{{ cartProduct.name }}</h1>

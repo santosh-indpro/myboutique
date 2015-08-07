@@ -14,7 +14,7 @@
                     <span class="postedTime">{{ product.datecreated | date : "MMM d, yyyy" }}</span>
                 </div><!-- //timeAndLocationH  clearfix-->
                 <div class="productImgH">
-                    <img src="{{  clientAppConfigurationS.serverApiBaseURL + '/' + product.images[0] }}"/>
+                    <img src="{{ clientAppConfiguration.serverApiBaseURL + '/' + product.images[0] }}"/>
                     <div class="ImgText">
                         <h1>{{ product.name }}</h1>
                     </div><!-- //ImgText -->

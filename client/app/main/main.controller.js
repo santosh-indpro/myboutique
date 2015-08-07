@@ -3,6 +3,9 @@
 angular.module('myboutiqueApp')
     .controller('MainCtrl', ['$scope', '$http', '$rootScope',function ($scope, $http, $rootScope) {
 
+        // Client App config
+        $rootScope.clientAppConfiguration = clientAppConfiguration;
+
         // User info
         $rootScope.userInfo = {};
         $http.get(''.url('/api/users/')).success(function(userInfo) {
@@ -69,7 +72,7 @@ angular.module('myboutiqueApp')
                 angular.forEach($scope.productDetails.images, function(value, key) {
                     $scope.productImagesForCarousel.push({
                         key: key,
-                        name: value,
+                        imageUrl: $rootScope.clientAppConfiguration.serverApiBaseURL + '/' + value,
                         first: (key === 0)?(true):(false)
                     });
                 });

@@ -58,7 +58,7 @@ angular.module('productCreate.ctrl', [])
                         "description": "Uploaded from my phone"
                     };
 
-                    var c = ft.upload(imageURI, clientAppConfiguration.serverApiBaseURL + "/images",
+                    var c = ft.upload(imageURI, $rootScope.clientAppConfiguration.serverApiBaseURL + "/images",
                         function (res) {
 
                             setTimeout(function(index){
@@ -67,8 +67,8 @@ angular.module('productCreate.ctrl', [])
                                     if(value.value === '' && imagePlacedInCycle === false)
                                     {
                                         imagePlacedInCycle = true;
-                                        console.log('URI - ',clientAppConfiguration.serverApiBaseURL);
-                                        $scope.imageAdded[key].value = clientAppConfiguration.serverApiBaseURL + '/' + res.response;
+                                        console.log('URI - ',$rootScope.clientAppConfiguration.serverApiBaseURL);
+                                        $scope.imageAdded[key].value = $rootScope.clientAppConfiguration.serverApiBaseURL + '/' + res.response;
                                         $rootScope.imageAdded.push(res.response);
                                     }
                                 });

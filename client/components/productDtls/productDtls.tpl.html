@@ -21,7 +21,7 @@
                         <div class="carousel-inner">
                             <div ng-repeat="images in productImagesForCarousel" ng-class="{ 'item': true, 'active': images.first }">
                                 <!-- Set the first background image using inline CSS below. -->
-                                <div class="fill" style="background-image:url('http://localhost:3000/{{ images.name }}');"></div>
+                                <div class="fill" style="background-image:url('{{ images.imageUrl }}');"></div>
                             </div>
                         </div>
 
