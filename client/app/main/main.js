@@ -11,8 +11,8 @@ angular.module('myboutiqueApp')
 
   }).directive('ngDropZone', function () {
 
-        /*
         function link(scope, element, attrs) {
+            console.log("DropZone--");
             // Add dropzone
             $(element).html('<div class="dropzone" id="' + attrs.ngDropZone + '"></div>');
             // Init Dropzone
@@ -28,12 +28,11 @@ angular.module('myboutiqueApp')
             restrict: "AE",
             link: link
         };
-        */
 
     }).directive('ngCarouselInit', function () {
 
-        /*
         function link(scope, element, attrs) {
+            console.log("Carousel");
             $(element).carousel({
                 interval: 5000 //changes the speed
             })
@@ -43,6 +42,5 @@ angular.module('myboutiqueApp')
             restrict: "AE",
             link: link
         };
-        */
 
     });
