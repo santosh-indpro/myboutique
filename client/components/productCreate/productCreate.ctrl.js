@@ -21,9 +21,10 @@ angular.module('productCreate.ctrl', [])
             // Collection from Web/Mobile
 
             console.log("ADDED IMAGES >>>>> ");
-            for(var i=0; i < $rootScope.imageAdded.length; i++){
+            console.log($rootScope.imageAdded);
+            /*for(var i=0; i < $rootScope.imageAdded.length; i++){
                 console.log($rootScope.imageAdded[i]);
-            }
+            }*/
 
             $scope.productDetails.images = $rootScope.imageAdded;
 
@@ -66,6 +67,7 @@ angular.module('productCreate.ctrl', [])
                                     if(value.value === '' && imagePlacedInCycle === false)
                                     {
                                         imagePlacedInCycle = true;
+                                        console.log('URI - ',clientAppConfiguration.serverApiBaseURL);
                                         $scope.imageAdded[key].value = clientAppConfiguration.serverApiBaseURL + '/' + res.response;
                                         $rootScope.imageAdded.push(res.response);
                                     }
