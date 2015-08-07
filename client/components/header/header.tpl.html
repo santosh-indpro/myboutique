@@ -22,19 +22,19 @@
 
             <a class="navbar-brand" href="javascript:void(0);">My Boutique</a>
 
-            <a class="cartBtn" href="javascript:void(0);">
+            <a ng-click="onOptionClick('cartList')" class="cartBtn" href="javascript:void(0);">
                   <span class="glyphicon glyphicon-shopping-cart relative">
-                      <span class="cartNumbers">2</span>
+                      <span class="cartNumbers">{{ cartListing.length }}</span>
                   </span>
             </a>
         </div>
         <div class="navbar-collapse collapse" ng-main-menu>
             <ul class="nav navbar-nav">
-                <li class="active"><a ng-click="onOptionClick('productCreate')" href="javascript:void(0);">Create item</a></li>
+                <li ng-class="{active: renderPagesObj.productCreate}"><a ng-click="onOptionClick('productCreate')" href="javascript:void(0);">Create item</a></li>
                 <li><a href="javascript:void(0);">My products</a></li>
                 <li><a href="javascript:void(0);">My profile</a></li>
                 <li><a href="javascript:void(0);">Terms of use</a></li>
-                <li><a ng-click="onOptionClick('productList')" href="javascript:void(0);">Back to Products List</a></li>
+                <li ng-class="{active: renderPagesObj.productList}"><a ng-click="onOptionClick('productList')" href="javascript:void(0);">Back to Products List</a></li>
             </ul>
         </div>
     </nav>

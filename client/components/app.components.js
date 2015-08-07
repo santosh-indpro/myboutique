@@ -3,5 +3,6 @@ angular.module('ui.components', [
     'productList',
     'productDtls',
     'productCreate',
+    'cartList',
     'orderList'
 ]);

@@ -15,11 +15,24 @@ angular.module('myboutiqueApp')
             productList: false,
             productDetails: false,
             productCreate: false,
+            cartList: false,
             orderList: false
         };
 
         // Initialize Uploaded images collection
         $rootScope.imageAdded = [];
+
+        $rootScope.cartListing = [];
+        $rootScope.countries = [
+            {
+                id: 1,
+                label: 'India'
+            },
+            {
+                id: 2,
+                label: 'Sweden'
+            }
+        ];
 
         // Detect phone
         $rootScope.onPhone = false;
@@ -60,6 +73,23 @@ angular.module('myboutiqueApp')
                         first: (key === 0)?(true):(false)
                     });
                 });
+            });
+        });
+
+        // Add to cart
+        $scope.$on('onAddToCart', function (event, productId) {
+            $http.get(''.url('/api/products/' + productId)).success(function(productDetails) {
+                var addToCartStatus = true;
+                if($rootScope.cartListing.length > 0){
+                    angular.forEach($rootScope.cartListing, function(value, key) {
+                        if(value._id === productId) {
+                            addToCartStatus = false;
+                        }
+                    });
+                }
+                if(addToCartStatus){
+                    $rootScope.cartListing.push(productDetails);
+                }
             });
         });
 
