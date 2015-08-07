@@ -7,11 +7,7 @@
                 <ul>
                     <li>
                         <label>Your mobile number:</label>
-                        988 008 9876
-                    </li>
-                    <li>
-                        <label>Email:</label>
-                        test@gmail.com
+                        {{ userInfo.mobile }}
                     </li>
                     <li>
                         <label>Location:</label>
@@ -23,7 +19,7 @@
                     </li>
                     <li>
                         <label>Price:</label>
-                        <input ng-model="productDetails.price" type="text">
+                        <input ng-model="productDetails.price" type="number">
                     </li>
                     <li>
                         <label>Upload photo:</label>

@@ -8,7 +8,7 @@
 
         <div ng-if="productsCollection.length > 0" ng-repeat="product in productsCollection" class="col-md-4 col-sm-6 col-xs-12">
             <a ng-click="showProductDetails('productDetails', product._id)" class="listContainer" href="javascript: void(0);">
-                <h2><span class="glyphicon glyphicon-phone-alt"></span>988 008 9876</h2>
+                <h2><span class="glyphicon glyphicon-phone-alt"></span>{{ userInfo.mobile }}</h2>
                 <div class="timeAndLocationH clearfix">
                     <span class="locationH">@ {{ product.location }}</span>
                     <span class="postedTime">{{ product.datecreated | date : "MMM d, yyyy" }}</span>

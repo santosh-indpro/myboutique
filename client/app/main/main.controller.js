@@ -3,6 +3,13 @@
 angular.module('myboutiqueApp')
     .controller('MainCtrl', ['$scope', '$http', '$rootScope',function ($scope, $http, $rootScope) {
 
+        // User info
+        $rootScope.userInfo = {};
+        $http.get(''.url('/api/users/')).success(function(userInfo) {
+            console.log("userInfo - ", userInfo);
+            $rootScope.userInfo = userInfo[0];
+        });
+
         // Initialize page render object
         $scope.renderPagesObj = {
             productList: false,
@@ -34,7 +41,7 @@ angular.module('myboutiqueApp')
         function renderSelectedPage(selectedPage){
             for (var prop in $scope.renderPagesObj) {
                 if ($scope.renderPagesObj.hasOwnProperty(prop) && selectedPage === prop) {
-                    $scope.renderPagesObj[prop] = !$scope.renderPagesObj[prop];
+                    $scope.renderPagesObj[prop] = true;
                 } else {
                     $scope.renderPagesObj[prop] = false;
                 }
