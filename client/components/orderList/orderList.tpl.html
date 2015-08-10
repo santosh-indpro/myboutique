@@ -1,10 +1,74 @@
 <div ng-controller="OrderListController" class="container">
-    <div class="row">
+    <h1 class="page-header">Order List:</h1>
+
+    <!-- Order info section -->
+    <div ng-repeat="orderInfo in orderListCollection" class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
+
+            <div class="placeOrderH">
+                <ul>
+                    <li>
+                        <label>Full name:</label>
+                        {{ userInfo.fullname }}
+                    </li>
+                    <li>
+                        <label>Address Line 1:</label>
+                        {{ orderInfo.addressL1 }}
+                    </li>
+                    <li>
+                        <label>Address Line 2:</label>
+                        {{ orderInfo.addressL2 }}
+                    </li>
+                    <li>
+                        <label>Town/City:</label>
+                        {{ orderInfo.city }}
+                    </li>
+                    <li>
+                        <label>State:</label>
+                        {{ orderInfo.state }}
+                    </li>
+                    <li>
+                        <label>Deal description:</label>
+                        {{ orderInfo.dealDesc }}
+                    </li>
+                    <li>
+                        <label>Mobile number:</label>
+                        {{ userInfo.mobile }}
+                    </li>
+                </ul>
+            </div>
+
+        </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
+
+        <div style="clear: both;">
+            <div ng-repeat="product in orderInfo.productsList" class="col-md-4 col-sm-6 col-xs-12">
+                <a class="listContainer" href="javascript: void(0);">
+                    <div class="timeAndLocationH clearfix">
+                        <span class="locationH">@ {{ product.location }}</span>
+                        <span class="postedTime">{{ product.datecreated | date : "MMM d, yyyy" }}</span>
+                    </div>
+                    <div class="productImgH">
+                        <img src="{{ clientAppConfiguration.serverApiBaseURL + '/' + product.images[0] }}"/>
+                        <div class="ImgText">
+                            <h1>{{ product.name }}</h1>
+                        </div>
+                    </div>
+                    <p>
+                        {{ product.description }}
+                    </p>
+                </a>
+            </div>
+        </div>
+
+    </div><!-- //row -->
+
+    <!--<div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Order List:</h1>
             <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="order in orderListCollection">
                 <li><a href="#" tooltip="{{order.addressL1}}">{{order.addressL1}}</a></li>
             </ul>
         </div>
-    </div>
+    </div>-->
+
 </div>

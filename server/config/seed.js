@@ -32,7 +32,7 @@ Thing.find({}).remove(function() {
   });
 });
 
-Users.find({}).remove(function(){
+/*Users.find({}).remove(function(){
     Users.create(
         {
             mobile: '9887771234',
@@ -45,10 +45,10 @@ Users.find({}).remove(function(){
             active: true
         }
     );
-});
+});*/
 
-Products.find({}).remove(function(){
-    /*Products.create(
+/*Products.find({}).remove(function(){
+    Products.create(
         {
             userID: '',
             name: "Test items",
@@ -60,34 +60,33 @@ Products.find({}).remove(function(){
             datecreated: "2015-07-01",
             publishStatus: true
         }
-    );*/
-});
+    );
+});*/
 
 Transactions.find({}).remove(function(){
-    Transactions.create(
+    /*Transactions.create(
         {
             userID: '',
             addressL1: '56, Lav road',
             addressL2: 'Indr',
             city: 'Bangalore',
             state: 'Karnataka',
-            country: 'India',
+            dealDesc: 'Desc',
             productsList: [
                 {
                     productID: '',
-                    quantity: ''
+                    ownerID: ''
                 },
                 {
                     productID: '',
-                    quantity: ''
+                    ownerID: ''
                 }
             ],
-            totalCost: 300,
-            orderDate: "2015-07-01",
+            orderDate: '2015-07-01',
             orderStatus: true,
-            paymentStatus: false,
-            paymentDate: ""
+            orderConfirmStatus: false,
+            orderConfirmDate: ''
         }
-    );
+    );*/
 });
 

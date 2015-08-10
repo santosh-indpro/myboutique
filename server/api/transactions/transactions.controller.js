@@ -35,7 +35,7 @@ exports.show = function(req, res) {
 
 // Creates a new transaction in the DB.
 exports.create = function(req, res) {
-  console.log("Create trans - Req body",req.body);
+  //console.log("Create trans - Req body",req.body);
   Transaction.create(req.body, function(err, transaction) {
     if(err) { return handleError(res, err); }
 

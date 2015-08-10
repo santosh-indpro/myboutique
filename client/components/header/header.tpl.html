@@ -1,16 +1,3 @@
-<!--
-<header class="hero-unit" id="banner" ng-controller="HeaderController">
-    <div class="container">
-        <h1>'Allo, 'Allo!</h1>
-    </div>
-    <div>
-        <label ng-click="onOptionClick('mainMenu')">Menu</label>
-        <label ng-click="onOptionClick('productList')">ProductList</label>
-        <label ng-click="onOptionClick('orderList')">OrderList</label>
-    </div>
-</header>
--->
-
 <header ng-controller="HeaderController">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
@@ -31,7 +18,7 @@
         <div class="navbar-collapse collapse" ng-main-menu>
             <ul class="nav navbar-nav">
                 <li ng-class="{active: renderPagesObj.productCreate}"><a ng-click="onOptionClick('productCreate')" href="javascript:void(0);">Create item</a></li>
-                <li><a href="javascript:void(0);">My products</a></li>
+                <li ng-class="{active: renderPagesObj.orderList}"><a ng-click="onOptionClick('orderList')" href="javascript:void(0);">My Orders</a></li>
                 <li><a href="javascript:void(0);">My profile</a></li>
                 <li><a href="javascript:void(0);">Terms of use</a></li>
                 <li ng-class="{active: renderPagesObj.productList}"><a ng-click="onOptionClick('productList')" href="javascript:void(0);">Back to Products List</a></li>
