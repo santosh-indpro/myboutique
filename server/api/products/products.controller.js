@@ -48,6 +48,8 @@ exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   Product.findById(req.params.id, function (err, product) {
     if (err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     if(!product) { return res.status(404).send('Not Found'); }
     var updated = _.merge(product, req.body);
     updated.save(function (err) {
@@ -61,6 +63,8 @@ exports.update = function(req, res) {
 exports.destroy = function(req, res) {
   Product.findById(req.params.id, function (err, product) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     if(!product) { return res.status(404).send('Not Found'); }
     product.remove(function(err) {
       if(err) { return handleError(res, err); }

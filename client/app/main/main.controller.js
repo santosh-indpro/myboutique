@@ -26,16 +26,6 @@ angular.module('myboutiqueApp')
         $rootScope.imageAdded = [];
 
         $rootScope.cartListing = [];
-        $rootScope.countries = [
-            {
-                id: 1,
-                label: 'India'
-            },
-            {
-                id: 2,
-                label: 'Sweden'
-            }
-        ];
 
         // Detect phone
         $rootScope.onPhone = false;
