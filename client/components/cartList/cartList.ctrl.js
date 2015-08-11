@@ -24,7 +24,11 @@ angular.module('cartList.ctrl', [])
                 angular.forEach($rootScope.cartListing, function(value, key) {
                     cartInfoArr.push({
                         productID: value._id,
-                        ownerID: value.userID
+                        ownerID: value.userID,
+                        orderDate: Date.now(),
+                        orderStatus: true,
+                        orderConfirmDate: Date.now(),
+                        orderConfirmStatus: false
                     });
                 });
             }
@@ -36,11 +40,7 @@ angular.module('cartList.ctrl', [])
                 city: $scope.orderInfo.city,
                 state: $scope.orderInfo.state,
                 dealDesc: $scope.orderInfo.dealDesc,
-                productsList: cartInfoArr,
-                orderDate: Date.now(),
-                orderStatus: true,
-                orderConfirmDate: Date.now(),
-                orderConfirmStatus: false
+                productsList: cartInfoArr
             };
 
             console.log("Place Order info : ", placeOrderObj);

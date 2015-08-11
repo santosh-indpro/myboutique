@@ -64,29 +64,5 @@ Thing.find({}).remove(function() {
 });*/
 
 Transactions.find({}).remove(function(){
-    /*Transactions.create(
-        {
-            userID: '',
-            addressL1: '56, Lav road',
-            addressL2: 'Indr',
-            city: 'Bangalore',
-            state: 'Karnataka',
-            dealDesc: 'Desc',
-            productsList: [
-                {
-                    productID: '',
-                    ownerID: ''
-                },
-                {
-                    productID: '',
-                    ownerID: ''
-                }
-            ],
-            orderDate: '2015-07-01',
-            orderStatus: true,
-            orderConfirmStatus: false,
-            orderConfirmDate: ''
-        }
-    );*/
 });
 

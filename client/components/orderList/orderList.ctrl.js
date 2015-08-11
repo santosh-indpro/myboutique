@@ -12,16 +12,17 @@ angular.module('orderList.ctrl', [])
                 productsCollection = productListCollection;
                 $http.get(''.url('/api/transactions')).success(function(orderListCollection) {
                     angular.forEach(orderListCollection, function(orderInfo, orderKey) {
-                        cartProductsArr = [];
                         angular.forEach(orderInfo.productsList, function(productsListInfo, orderKey) {
                             angular.forEach(productsCollection, function(productInfo, productKey) {
                                 if(productsListInfo.productID === productInfo._id){
-                                    cartProductsArr.push(productInfo);
+                                    orderListCollectionModified.push({
+                                        productInfo: productInfo,
+                                        productOrderInfo: productsListInfo,
+                                        transactionInfo: orderInfo
+                                    });
                                 }
                             });
                         });
-                        orderInfo.productsList = cartProductsArr;
-                        orderListCollectionModified.push(orderInfo);
                     });
                     console.log("orderListCollectionModified : ", orderListCollectionModified);
                     $scope.orderListCollection = orderListCollectionModified;

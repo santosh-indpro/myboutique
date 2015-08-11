@@ -10,11 +10,7 @@ var TransactionSchema = new Schema({
     city: String,
     state: String,
     dealDesc: String,
-    productsList: [],/* productID, ownerID */
-    orderDate: Date,
-    orderStatus: Boolean,
-    orderConfirmStatus: Boolean,
-    orderConfirmDate: Date
+    productsList: []
 });
 
 module.exports = mongoose.model('Transaction', TransactionSchema);
