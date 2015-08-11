@@ -277,3 +277,29 @@ p {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover; }
+
+.orderDetailsContainer {
+  margin-bottom: 20px; }
+  .orderDetailsContainer h2 {
+    font-size: 22px;
+    margin-bottom: 0px; }
+  .orderDetailsContainer .productImgH {
+    height: 132px;
+    overflow: hidden; }
+  .orderDetailsContainer p.qty {
+    margin-bottom: 6px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold; }
+    .orderDetailsContainer p.qty span {
+      margin-right: 6px; }
+  .orderDetailsContainer .addressH {
+    margin: 12px 0; }
+    .orderDetailsContainer .addressH h3 {
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: underline;
+      margin: 0 0 6px; }
+    .orderDetailsContainer .addressH p span {
+      font-weight: bold;
+      margin-right: 6px; }
