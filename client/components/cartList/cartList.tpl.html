@@ -7,10 +7,10 @@
                 <h2>No items</h2>
             </div>
 
-            <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="cartH clearfix">
-                <div class="imgH">
+            <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="orderDetailsContainer clearfix">
+                <div class="productImgH">
                     <img src="{{  clientAppConfiguration.serverApiBaseURL + '/' + cartProduct.images[0] }}"/>
-                </div><!-- //imgH -->
+                </div><!-- //productImgH -->
                 <div class="textH">
                     <h1>{{ cartProduct.name }}</h1>
                     <div class="priceH">
@@ -18,8 +18,9 @@
                         <span>$ {{ cartProduct.price }}</span>
                     </div><!-- //priceH -->
                     <a ng-click="removeItem(cartProduct._id)" href="javascript: void(0);">Remove</a>
-                </div>
-            </div><!-- //cartH -->
+                </div><!-- //addressH -->
+
+            </div><!-- //orderDetailsContainer -->
 
         </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
     </div><!-- //row -->
