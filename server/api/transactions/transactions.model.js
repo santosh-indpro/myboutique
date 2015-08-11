@@ -9,13 +9,12 @@ var TransactionSchema = new Schema({
     addressL2: String,
     city: String,
     state: String,
-    country: String,
-    productsList: [],/* productID, quantity */
-    totalCost: Number,
+    dealDesc: String,
+    productsList: [],/* productID, ownerID */
     orderDate: Date,
     orderStatus: Boolean,
-    paymentStatus: Boolean,
-    paymentDate: Date
+    orderConfirmStatus: Boolean,
+    orderConfirmDate: Date
 });
 
 module.exports = mongoose.model('Transaction', TransactionSchema);

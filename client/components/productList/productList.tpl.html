@@ -1,10 +1,31 @@
-<div ng-controller="ProductListController" class="container">
+<div class="container" ng-controller="ProductListController">
+
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Products:</h1>
-            <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="product in productsCollection">
-                <li><a href="#" tooltip="{{product.description}}" ng-click="showProductDetails('productDetails', product._id)">{{product.name}}</a></li>
-            </ul>
+
+        <div ng-if="productsCollection.length === 0" class="col-md-4 col-sm-6 col-xs-12">
+            <h2>No items</h2>
         </div>
-    </div>
-</div>
+
+        <div ng-if="productsCollection.length > 0" ng-repeat="product in productsCollection" class="col-md-4 col-sm-6 col-xs-12">
+            <a ng-click="showProductDetails('productDetails', product._id)" class="listContainer" href="javascript: void(0);">
+                <h2><span class="glyphicon glyphicon-phone-alt"></span>{{ userInfo.mobile }}</h2>
+                <div class="timeAndLocationH clearfix">
+                    <span class="locationH">@ {{ product.location }}</span>
+                    <span class="postedTime">{{ product.datecreated | date : "MMM d, yyyy" }}</span>
+                </div><!-- //timeAndLocationH  clearfix-->
+                <div class="productImgH">
+                    <img src="{{ clientAppConfiguration.serverApiBaseURL + '/' + product.images[0] }}"/>
+                    <div class="ImgText">
+                        <h1>{{ product.name }}</h1>
+                    </div><!-- //ImgText -->
+                </div><!-- //productImgH -->
+                <p>
+                    {{ product.description }}
+                </p>
+            </a><!-- //listContainer -->
+        </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
+
+    </div><!-- //row -->
+
+</div><!-- //container -->
+

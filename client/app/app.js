@@ -13,7 +13,21 @@ angular.module('myboutiqueApp', [
 
     //TODO: Need to configure the location provider if accessing app in browser or we may need to remove this.
     //$locationProvider.html5Mode(true);
-  });
+  }).directive('ngFastClick', function () {
+
+        function link(scope, element, attrs) {
+            console.log("Fast Click");
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        }
+
+        return {
+            restrict: "AE",
+            link: link
+        };
+
+    });
 
 var clientAppConfiguration = {
     'runningAsApp' : true,

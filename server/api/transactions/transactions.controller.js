@@ -16,6 +16,8 @@ var Transaction = require('./transactions.model');
 exports.index = function(req, res) {
   Transaction.find(function (err, transactions) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     return res.status(200).json(transactions);
   });
 };
@@ -24,6 +26,8 @@ exports.index = function(req, res) {
 exports.show = function(req, res) {
   Transaction.findById(req.params.id, function (err, transaction) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     if(!transaction) { return res.status(404).send('Not Found'); }
     return res.json(transaction);
   });
@@ -31,8 +35,11 @@ exports.show = function(req, res) {
 
 // Creates a new transaction in the DB.
 exports.create = function(req, res) {
+  //console.log("Create trans - Req body",req.body);
   Transaction.create(req.body, function(err, transaction) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     return res.status(201).json(transaction);
   });
 };
@@ -42,6 +49,8 @@ exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   Transaction.findById(req.params.id, function (err, transaction) {
     if (err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     if(!transaction) { return res.status(404).send('Not Found'); }
     var updated = _.merge(transaction, req.body);
     updated.save(function (err) {
@@ -55,6 +64,8 @@ exports.update = function(req, res) {
 exports.destroy = function(req, res) {
   Transaction.findById(req.params.id, function (err, transaction) {
     if(err) { return handleError(res, err); }
+
+    addCrossDomainHeader(res);
     if(!transaction) { return res.status(404).send('Not Found'); }
     transaction.remove(function(err) {
       if(err) { return handleError(res, err); }
@@ -65,4 +76,10 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.status(500).send(err);
+}
+
+function addCrossDomainHeader(res){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 }

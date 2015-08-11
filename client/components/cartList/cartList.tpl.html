@@ -1,0 +1,90 @@
+<div ng-controller="CartListController" class="container">
+
+    <div ng-if="cartShow" class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
+
+            <div ng-if="cartListing.length === 0" class="col-md-4 col-sm-6 col-xs-12">
+                <h2>No items</h2>
+            </div>
+
+            <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="cartH clearfix">
+                <div class="imgH">
+                    <img src="{{  clientAppConfiguration.serverApiBaseURL + '/' + cartProduct.images[0] }}"/>
+                </div><!-- //imgH -->
+                <div class="textH">
+                    <h1>{{ cartProduct.name }}</h1>
+                    <div class="priceH">
+                        <span>Price:</span>
+                        <span>$ {{ cartProduct.price }}</span>
+                    </div><!-- //priceH -->
+                    <a ng-click="removeItem(cartProduct._id)" href="javascript: void(0);">Remove</a>
+                </div>
+            </div><!-- //cartH -->
+
+        </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
+    </div><!-- //row -->
+
+    <div ng-if="cartShow && cartListing.length > 0" class="navbar-fixed-bottom">
+        <div class="container-fluid text-center footer">
+            <button ng-click="showPlaceOrder()" type="button" class="btnV1">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                Place Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Place Order section -->
+    <div ng-if="!cartShow" class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
+
+            <div class="placeOrderH">
+                <ul>
+                    <li>
+                        <label>Full name:</label>
+                        {{ userInfo.fullname }}
+                    </li>
+                    <li>
+                        <label>Address Line 1:</label>
+                        <input ng-model="orderInfo.addressL1" type="text" placeholder="Flat/House No, Floor, Building ">
+                    </li>
+                    <li>
+                        <label>Address Line 2:</label>
+                        <input ng-model="orderInfo.addressL2" type="text" placeholder="Colony/Society, Street, Locality/Area">
+                    </li>
+                    <li>
+                        <label>Town/City:</label>
+                        <input ng-model="orderInfo.city" type="text">
+                    </li>
+                    <li>
+                        <label>State:</label>
+                        <input ng-model="orderInfo.state" type="text">
+                    </li>
+                    <li>
+                        <label>Deal description:</label>
+                        <textarea ng-model="orderInfo.dealDesc"></textarea>
+                    </li>
+                    <li>
+                        <label>Mobile number:</label>
+                        {{ userInfo.mobile }}
+                    </li>
+                </ul>
+                  <span class="textH">
+                      <span class="glyphicon glyphicon-info-sign"></span>
+                      <span>
+                          All the items eligible for cash on delivery
+                      </span>
+                  </span>
+            </div>
+
+        </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
+    </div><!-- //row -->
+    <div ng-if="!cartShow" class="navbar-fixed-bottom">
+        <div class="container-fluid text-center footer">
+            <button ng-click="addPlaceOrder()" type="button" class="btnV1">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                Submit
+            </button>
+        </div>
+    </div>
+
+</div><!-- //container -->
