@@ -72,12 +72,18 @@ h1, h2, .cartNumbers, .btnV1, .placeOrderH label
 body      {padding:90px 0;}
 p         {font-size:14px; line-height:24px; color:#222;}
 
-.navbar-header                      {float:none;}
+.navbar-header                      {float:none; margin-top: 10px; margin-bottom: 10px;}
 .navbar-left,.navbar-right          {float:none !important;}
-.navbar-toggle                      {display:block; float:left !important; margin:14px 0 0 14px;
-  border:none !important; padding:0;}
-.navbar-toggle:hover,
-.navbar-toggle:focus                {background-color:transparent !important;}
+.menu-btn                      {display:block; float:left !important; margin:14px 0 0 14px;
+  border:none !important; padding:0; background-color: transparent;}
+.menu-btn:hover,
+.menu-btn:focus                {background-color:transparent !important;}
+.menu-btn .icon-bar            {border-radius:2px; height:5px; width:32px;}
+
+.navbar-toggle                 { float: left; padding: 0px;  margin: 0px; border: 0px;  }
+.navbar-toggle:focus,
+.navbar-toggle:hover            {background-color:transparent !important;}
+
 .navbar-collapse                    { }
 .navbar-fixed-top                   {top:0; border-width:0;}
 .navbar-collapse.collapse           {display:none!important;}
@@ -86,7 +92,6 @@ p         {font-size:14px; line-height:24px; color:#222;}
 .navbar-nav>li>a                    {padding-top:10px; padding-bottom:10px; color:#fff !important;}
 .collapse.in                        {display:block !important;}
 .navbar-inverse                     {background-color:#ffa500;}
-.navbar-toggle .icon-bar            {border-radius:2px; height:5px; width:32px;}
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:focus,
@@ -99,7 +104,7 @@ p         {font-size:14px; line-height:24px; color:#222;}
   position:absolute;
   right:12px;
   top:12px;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size:26px;
   color:#fff;
   &:hover {
