@@ -2,7 +2,7 @@
 
 angular.module('orderList.ctrl', [])
     .controller('OrderListController', ['$scope', '$http', function ($scope, $http) {
-        var productsCollection = [], orderListCollectionModified = [], cartProductsArr = [];
+        var productsCollection = [], orderListCollectionModified = [];
         $scope.orderListCollection = [];
 
         loadOrders();
@@ -10,11 +10,11 @@ angular.module('orderList.ctrl', [])
         function loadOrders(){
             $http.get(''.url('/api/products')).success(function(productListCollection) {
                 productsCollection = productListCollection;
-                $http.get(''.url('/api/transactions')).success(function(orderListCollection) {
+                $http.get(''.url('/api/transactions/user-id/' + $scope.userInfo._id)).success(function(orderListCollection) {
                     angular.forEach(orderListCollection, function(orderInfo, orderKey) {
                         angular.forEach(orderInfo.productsList, function(productsListInfo, orderKey) {
                             angular.forEach(productsCollection, function(productInfo, productKey) {
-                                if(productsListInfo.productID === productInfo._id){
+                                if(productsListInfo.productID === productInfo._id && productsListInfo.ownerID === $scope.userInfo._id){
                                     orderListCollectionModified.push({
                                         productInfo: productInfo,
                                         productOrderInfo: productsListInfo,

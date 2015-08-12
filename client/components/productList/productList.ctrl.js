@@ -9,6 +9,10 @@ angular.module('productList.ctrl', [])
             $scope.productsCollection = productsCollection;
         });
 
+        /*$http.get(''.url('/api/products/with-users')).success(function(productsUsersCollection) {
+            console.log("Products with users : ", productsUsersCollection);
+        });*/
+
         $scope.showProductDetails = function(pageToRedirect, productId){
             $rootScope.$broadcast('onNavigationLinkClicked', pageToRedirect);
             $rootScope.$broadcast('onGetProductDetailsById', productId);

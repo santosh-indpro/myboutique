@@ -1,7 +1,12 @@
 <div ng-controller="OrderListController" class="container">
 
     <div class="row">
-        <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
+
+        <div ng-if="orderListCollection.length === 0" class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
+            <h2>No items</h2>
+        </div>
+
+        <div ng-if="orderListCollection.length > 0" class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
             <div ng-repeat="productTrans in orderListCollection" class="orderDetailsContainer">
                 <h2>{{ productTrans.productInfo.name }}</h2>

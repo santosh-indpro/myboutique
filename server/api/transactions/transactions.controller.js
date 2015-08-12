@@ -1,6 +1,7 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
  * GET     /transactions              ->  index
+ * GET     /transactions/user-id/:id  ->  transactionsByUserId
  * POST    /transactions              ->  create
  * GET     /transactions/:id          ->  show
  * PUT     /transactions/:id          ->  update
@@ -20,6 +21,16 @@ exports.index = function(req, res) {
     addCrossDomainHeader(res);
     return res.status(200).json(transactions);
   });
+};
+
+// Get list of transactions by user-id
+exports.transactionsByUserId = function(req, res) {
+    Transaction.find({userID: req.params.userID}, function (err, transactions) {
+        if(err) { return handleError(res, err); }
+
+        addCrossDomainHeader(res);
+        return res.status(200).json(transactions);
+    });
 };
 
 // Get a single transaction

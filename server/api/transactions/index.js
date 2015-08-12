@@ -6,6 +6,7 @@ var controller = require('./transactions.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/user-id/:userID', controller.transactionsByUserId);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

@@ -22,7 +22,7 @@ var all = {
   port: process.env.PORT || 3000,
 
   // Server IP
-  ip: process.env.IP || 'localhost',
+  ip: process.env.IP || '192.168.1.134',
 
   // Should we populate the DB with sample data?
   seedDB: false,

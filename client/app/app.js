@@ -31,7 +31,7 @@ angular.module('myboutiqueApp', [
 
 var clientAppConfiguration = {
     'runningAsApp' : true,
-    'serverApiBaseURL' : 'http://localhost:3000'
+    'serverApiBaseURL' : 'http://192.168.1.134:3000'
 };
 
 //Method : extending the String type for format function support.

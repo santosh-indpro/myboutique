@@ -11,6 +11,7 @@
 
 var _ = require('lodash');
 var Product = require('./products.model');
+var User = require('../users/users.model');
 
 // Get list of products
 exports.index = function(req, res) {
@@ -22,6 +23,40 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of products with userinfo
+exports.productListWithUsers = function(req, res) {
+    Product.find(function (err, products) {
+        if(err) { return handleError(res, err); }
+
+        // User get
+        User.find(function (err, users) {
+            var productsWithUsers = [], productsCount = products.length;
+            if(err) { return handleError(res, err); }
+
+            if(productsCount > 0){
+                products.forEach(function(productInfo, productKey){
+                    //console.log('product key : ',productKey);
+                    users.forEach(function(userInfo, userKey){
+                        //console.log('user key : ',userKey);
+                        if(productInfo.userID === userInfo._id){
+                            productsWithUsers.push({ productInfo: productInfo, userInfo: userInfo });
+                            if(productKey === (productsCount - 1)){
+                                console.log('productsWithUsers : ',productsWithUsers);
+                                addCrossDomainHeader(res);
+                                return res.status(200).json(productsWithUsers);
+                            }
+                        }
+                    });
+                });
+            } else {
+                addCrossDomainHeader(res);
+                return res.status(200).json(productsWithUsers);
+            }
+
+        });
+
+    });
+};
 // Get a single product
 exports.show = function(req, res) {
   Product.findById(req.params.id, function (err, product) {
