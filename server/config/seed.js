@@ -63,6 +63,6 @@ Thing.find({}).remove(function() {
     );
 });*/
 
-Transactions.find({}).remove(function(){
-});
+/*Transactions.find({}).remove(function(){
+});*/
 
