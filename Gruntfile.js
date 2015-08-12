@@ -369,6 +369,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.client %>',
         dest: '.tmp/',
         src: ['{app,components}/**/*.css']
+      },
+      font:{
+        cwd: '<%= yeoman.dist %>/public/assets/fonts/',
+        dest: '<%= yeoman.dist %>/public/fonts/',
+        src: ['**'],
+        expand:true
       }
     },
 
@@ -673,7 +679,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:sass', 
+    'injector:sass',
     'concurrent:dist',
     'injector',
     'wiredep',
@@ -687,7 +693,8 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'copy:font'
   ]);
 
   grunt.registerTask('default', [

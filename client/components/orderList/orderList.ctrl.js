@@ -14,7 +14,7 @@ angular.module('orderList.ctrl', [])
                     angular.forEach(orderListCollection, function(orderInfo, orderKey) {
                         angular.forEach(orderInfo.productsList, function(productsListInfo, orderKey) {
                             angular.forEach(productsCollection, function(productInfo, productKey) {
-                                if(productsListInfo.productID === productInfo._id && productsListInfo.ownerID === $scope.userInfo._id){
+                                if(productsListInfo.productID === productInfo._id){
                                     orderListCollectionModified.push({
                                         productInfo: productInfo,
                                         productOrderInfo: productsListInfo,
