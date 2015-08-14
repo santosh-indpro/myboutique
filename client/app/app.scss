@@ -80,11 +80,20 @@ p         {font-size:14px; line-height:24px; color:#222;}
 .menu-btn:focus                {background-color:transparent !important;}
 .menu-btn .icon-bar            {border-radius:2px; height:5px; width:32px;}
 
-.navbar-toggle                 { float: left; padding: 0px;  margin: 0px; border: 0px;  }
+.navbar-toggle                 { float: left; padding: 0px;  margin: 0px; border: 0px; display: block;  }
 .navbar-toggle:focus,
 .navbar-toggle:hover            {background-color:transparent !important;}
 
-.navbar-collapse                    { }
+.navbar-collapse{
+  &.collapsing {
+    -webkit-transition: height 0.15s;
+    -moz-transition: height 0.15s;
+    -ms-transition: height 0.15s;
+    -o-transition: height 0.15s;
+    transition: height 0.15s;
+  }
+}
+
 .navbar-fixed-top                   {top:0; border-width:0;}
 .navbar-collapse.collapse           {display:none!important;}
 .navbar-nav                         {float: none!important; margin-top:0px;}
