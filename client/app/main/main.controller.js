@@ -1,20 +1,23 @@
 'use strict';
 
 angular.module('myboutiqueApp')
-    .controller('MainCtrl', ['$scope', '$http', '$rootScope',function ($scope, $http, $rootScope) {
+    .controller('MainCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
 
         // Client App config
         $rootScope.clientAppConfiguration = clientAppConfiguration;
 
         // User info
         $rootScope.userInfo = {};
-        $http.get(''.url('/api/users/')).success(function(userInfo) {
-            console.log("userInfo - ", userInfo);
-            $rootScope.userInfo = userInfo[0];
-        });
+        console.log("userInfo : ", $rootScope.userInfo);
+
+        $rootScope.checkUserLoggedIn = function(){
+            return angular.equals({}, $rootScope.userInfo);
+        };
 
         // Initialize page render object
         $scope.renderPagesObj = {
+            login: false,
+            register: false,
             productList: false,
             productDetails: false,
             productCreate: false,

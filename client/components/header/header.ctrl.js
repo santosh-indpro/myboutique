@@ -7,4 +7,8 @@ angular.module('header.ctrl', [])
             $rootScope.$broadcast('onNavigationLinkClicked', args);
         }
 
+        $scope.logoutUser = function(){
+            $rootScope.userInfo = {};
+        };
+
     }]);

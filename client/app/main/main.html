@@ -1,5 +1,7 @@
 <ng-ui-header></ng-ui-header>
 
+<ng-login ng-if="renderPagesObj.login"></ng-login>
+<ng-register ng-if="renderPagesObj.register"></ng-register>
 <ng-product-list ng-if="renderPagesObj.productList"></ng-product-list>
 <ng-product-dtls ng-if="renderPagesObj.productDetails"></ng-product-dtls>
 <ng-product-create ng-if="renderPagesObj.productCreate"></ng-product-create>

@@ -5,7 +5,7 @@ angular.module('productCreate.ctrl', [])
 
         // Initialize
         $scope.productDetails = {
-            userID: '',
+            userID: $rootScope.userInfo._id,
             name: '',
             description: '',
             price: '',

@@ -1,6 +1,7 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
  * GET     /products              ->  index
+ * GET     /products/with-users   ->  productListWithUsers
  * POST    /products              ->  create
  * GET     /products/:id          ->  show
  * PUT     /products/:id          ->  update
@@ -35,13 +36,14 @@ exports.productListWithUsers = function(req, res) {
 
             if(productsCount > 0){
                 products.forEach(function(productInfo, productKey){
-                    //console.log('product key : ',productKey);
+                    //console.log('product user id : ',productInfo.userID);
                     users.forEach(function(userInfo, userKey){
-                        //console.log('user key : ',userKey);
-                        if(productInfo.userID === userInfo._id){
-                            productsWithUsers.push({ productInfo: productInfo, userInfo: userInfo });
+                        //console.log('user id : ',userInfo._id);
+                        if(productInfo.userID == userInfo._id){
+                            //console.log('Push product : prd - %s , usr - %s ', productInfo.userID, userInfo._id);
+                            productsWithUsers.push({productInfo: productInfo, userInfo: userInfo});
                             if(productKey === (productsCount - 1)){
-                                console.log('productsWithUsers : ',productsWithUsers);
+                                //console.log('productsWithUsers : ',productsWithUsers);
                                 addCrossDomainHeader(res);
                                 return res.status(200).json(productsWithUsers);
                             }

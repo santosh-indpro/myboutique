@@ -36,11 +36,15 @@ Thing.find({}).remove(function() {
     Users.create(
         {
             mobile: '9887771234',
+            password: '1234',
+            email: 'test1@gmail.com',
             fullname: 'Santosh K',
             active: true
         },
         {
             mobile: '9885671234',
+            password: '1234',
+            email: 'test2@gmail.com',
             fullname: 'Bineesh K',
             active: true
         }

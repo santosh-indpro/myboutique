@@ -2,6 +2,8 @@
  * Using Rails-like standard naming convention for endpoints.
  * GET     /users              ->  index
  * POST    /users              ->  create
+ * POST    /users/login        ->  checkLogin
+ * POST    /users/register     ->  registerUser
  * GET     /users/:id          ->  show
  * PUT     /users/:id          ->  update
  * DELETE  /users/:id          ->  destroy
@@ -31,6 +33,41 @@ exports.show = function(req, res) {
     if(!user) { return res.status(404).send('Not Found'); }
     return res.json(user);
   });
+};
+
+// Register user
+exports.registerUser = function(req, res) {
+    User.find({ mobile: req.body.mobile }, function (err, user) {
+        if(err) { return handleError(res, err); }
+
+        addCrossDomainHeader(res);
+        if(!user) { return res.status(404).send('Not Found'); }
+
+        //console.log("Check Register api: ", user);
+        if(user.length === 0){
+            User.create(req.body, function(err, user) {
+                if(err) { return handleError(res, err); }
+
+                addCrossDomainHeader(res);
+                return res.status(201).json({status: true});
+            });
+        } else {
+            return res.json({status: false});
+        }
+
+    });
+};
+
+// Check user login
+exports.checkLogin = function(req, res) {
+    console.log("User info api : ", req.body);
+    User.find({ mobile: req.body.mobile, password: req.body.password }, function (err, user) {
+        if(err) { return handleError(res, err); }
+
+        addCrossDomainHeader(res);
+        if(!user) { return res.status(404).send('Not Found'); }
+        return res.json(user);
+    });
 };
 
 // Creates a new user in the DB.

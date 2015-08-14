@@ -1,0 +1,40 @@
+<div ng-controller="RegisterController" class="container">
+    <!-- Register section -->
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
+
+            <div class="placeOrderH">
+                <ul>
+                    <li>
+                        <label>Mobile:</label>
+                        <input ng-model="registerInfo.mobile" type="number">
+                    </li>
+                    <li>
+                        <label>Password:</label>
+                        <input ng-model="registerInfo.password" type="password">
+                    </li>
+                    <li>
+                        <label>Full name:</label>
+                        <input ng-model="registerInfo.fullname" type="text">
+                    </li>
+                </ul>
+                  <span ng-if="registerFailStatus" class="textH">
+                      <span class="glyphicon glyphicon-info-sign"></span>
+                      <span>
+                          User already exists!
+                      </span>
+                  </span>
+            </div>
+
+        </div><!-- //col-md-4 col-sm-6 col-xs-12 -->
+    </div><!-- //row -->
+    <div class="navbar-fixed-bottom">
+        <div class="container-fluid text-center footer">
+            <button ng-click="registerUser()" type="button" class="btnV1">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                Register
+            </button>
+        </div>
+    </div>
+
+</div>
