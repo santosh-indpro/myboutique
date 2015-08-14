@@ -34,7 +34,7 @@ angular.module('myboutiqueApp')
         function link(scope, element, attrs) {
             console.log("Carousel");
             $(element).carousel({
-                interval: 5000 //changes the speed
+                interval: 2000 //changes the speed
             })
         }
 
