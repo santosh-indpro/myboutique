@@ -9,7 +9,6 @@ angular.module('myboutiqueApp')
         // Check Cookie
         checkCookie();
         function checkCookie(){
-            var cookieKey = 'MyBtqCk';
             if($cookies.getObject(cookieKey) === undefined || $cookies.getObject(cookieKey) === null){
                 $rootScope.userInfo = {};
             } else {

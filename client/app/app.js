@@ -33,6 +33,7 @@ var clientAppConfiguration = {
     'runningAsApp' : true,
     'serverApiBaseURL' : 'http://192.168.1.134:3000'
 };
+var cookieKey = 'MyBtqCk';
 
 //Method : extending the String type for format function support.
 String.prototype.format = function () {

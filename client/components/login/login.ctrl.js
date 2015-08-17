@@ -22,7 +22,6 @@ angular.module('login.ctrl', [])
 
         // Save in cookie
         function saveInCookie(userInfo){
-            var cookieKey = 'MyBtqCk';
             $cookies.remove(cookieKey);
             $cookies.putObject(cookieKey, userInfo);
             //console.log("$cookies get login : ", $cookies.getObject(cookieKey));
