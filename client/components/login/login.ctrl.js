@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('login.ctrl', [])
-    .controller('LoginController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    .controller('LoginController', ['$scope', '$rootScope', '$http', '$cookies', function ($scope, $rootScope, $http, $cookies) {
         $scope.loginInfo = {};
         $scope.loginFailStatus = false;
 
@@ -11,7 +11,7 @@ angular.module('login.ctrl', [])
                 if(response.length === 0){
                     $scope.loginFailStatus = true;
                 } else {
-                    $rootScope.userInfo = response[0];
+                    $rootScope.userInfo = saveInCookie(response[0]);
                     $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
                 }
             }).error(function(status) {
@@ -19,5 +19,14 @@ angular.module('login.ctrl', [])
             });
 
         };
+
+        // Save in cookie
+        function saveInCookie(userInfo){
+            var cookieKey = 'MyBtqCk';
+            $cookies.remove(cookieKey);
+            $cookies.putObject(cookieKey, userInfo);
+            //console.log("$cookies get login : ", $cookies.getObject(cookieKey));
+            return $cookies.getObject(cookieKey);
+        }
 
     }]);

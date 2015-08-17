@@ -20,9 +20,9 @@
                 <li ng-show="checkUserLoggedIn()" ng-class="{active: renderPagesObj.login}"><a ng-click="onOptionClick('login')" href="javascript:void(0);">Login</a></li>
                 <li ng-show="checkUserLoggedIn()" ng-class="{active: renderPagesObj.register}"><a ng-click="onOptionClick('register')" href="javascript:void(0);">Register</a></li>
                 <li ng-show="!checkUserLoggedIn()" ng-class="{active: renderPagesObj.productCreate}"><a ng-click="onOptionClick('productCreate')" href="javascript:void(0);">Create item</a></li>
-                <li ng-show="!checkUserLoggedIn()" ng-class="{active: renderPagesObj.orderList}"><a ng-click="onOptionClick('orderList')" href="javascript:void(0);">My Orders</a></li>
+                <li ng-show="!checkUserLoggedIn()" ng-class="{active: renderPagesObj.orderList}"><a ng-click="onOptionClick('orderList')" href="javascript:void(0);">Pending orders</a></li>
                 <!--<li><a href="javascript:void(0);">Terms of use</a></li>-->
-                <li ng-class="{active: renderPagesObj.productList}"><a ng-click="onOptionClick('productList')" href="javascript:void(0);">Products List</a></li>
+                <li ng-class="{active: renderPagesObj.productList}"><a ng-click="onOptionClick('productList')" href="javascript:void(0);">Products list</a></li>
                 <li ng-show="!checkUserLoggedIn()"><a ng-click="logoutUser()" href="javascript:void(0);">Logout</a></li>
             </ul>
         </div>

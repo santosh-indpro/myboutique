@@ -1,15 +1,24 @@
 'use strict';
 
 angular.module('myboutiqueApp')
-    .controller('MainCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+    .controller('MainCtrl', ['$scope', '$http', '$rootScope', '$cookies', function ($scope, $http, $rootScope, $cookies) {
 
         // Client App config
         $rootScope.clientAppConfiguration = clientAppConfiguration;
 
-        // User info
-        $rootScope.userInfo = {};
-        console.log("userInfo : ", $rootScope.userInfo);
+        // Check Cookie
+        checkCookie();
+        function checkCookie(){
+            var cookieKey = 'MyBtqCk';
+            if($cookies.getObject(cookieKey) === undefined || $cookies.getObject(cookieKey) === null){
+                $rootScope.userInfo = {};
+            } else {
+                $rootScope.userInfo = $cookies.getObject(cookieKey);
+            }
+            //console.log("$cookies get : ", $rootScope.userInfo);
+        }
 
+        // Check User login
         $rootScope.checkUserLoggedIn = function(){
             return angular.equals({}, $rootScope.userInfo);
         };
@@ -27,7 +36,7 @@ angular.module('myboutiqueApp')
 
         // Initialize Uploaded images collection
         $rootScope.imageAdded = [];
-
+        // Initialize cart list
         $rootScope.cartListing = [];
 
         // Detect phone
