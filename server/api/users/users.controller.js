@@ -5,6 +5,7 @@
  * POST    /users/login        ->  checkLogin
  * POST    /users/register     ->  registerUser
  * GET     /users/:id          ->  show
+ * GET     /users/owner/:id    ->  showOwner
  * PUT     /users/:id          ->  update
  * DELETE  /users/:id          ->  destroy
  */
@@ -33,6 +34,19 @@ exports.show = function(req, res) {
     if(!user) { return res.status(404).send('Not Found'); }
     return res.json(user);
   });
+};
+
+// Get owner info
+exports.showOwner = function(req, res) {
+    User.findById(req.params.id, function (err, user) {
+        if(err) { return handleError(res, err); }
+
+        addCrossDomainHeader(res);
+        if(!user) { return res.status(404).send('Not Found'); }
+
+        user.password = '';
+        return res.json(user);
+    });
 };
 
 // Register user

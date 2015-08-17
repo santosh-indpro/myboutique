@@ -11,10 +11,8 @@ angular.module('productList.ctrl', [])
         });
 
         $scope.showProductDetails = function(pageToRedirect, productId){
-            if($rootScope.userInfo._id !== null && $rootScope.userInfo._id !== undefined){
-                $rootScope.$broadcast('onNavigationLinkClicked', pageToRedirect);
-                $rootScope.$broadcast('onGetProductDetailsById', productId);
-            }
+            $rootScope.$broadcast('onNavigationLinkClicked', pageToRedirect);
+            $rootScope.$broadcast('onGetProductDetailsById', productId);
         };
 
     }]);

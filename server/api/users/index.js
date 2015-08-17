@@ -7,6 +7,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+router.get('/owner/:id', controller.showOwner);
 router.post('/', controller.create);
 router.post('/login', controller.checkLogin);
 router.post('/register', controller.registerUser);

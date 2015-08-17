@@ -41,6 +41,7 @@ exports.productListWithUsers = function(req, res) {
                         //console.log('user id : ',userInfo._id);
                         if(productInfo.userID == userInfo._id){
                             //console.log('Push product : prd - %s , usr - %s ', productInfo.userID, userInfo._id);
+                            userInfo.password = '';
                             productsWithUsers.push({productInfo: productInfo, userInfo: userInfo});
                             if(productKey === (productsCount - 1)){
                                 //console.log('productsWithUsers : ',productsWithUsers);
