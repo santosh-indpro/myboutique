@@ -17,6 +17,7 @@
         </div>
         <div class="navbar-collapse collapse" ng-main-menu>
             <ul class="nav navbar-nav">
+                <li ng-class="{active: renderPagesObj.publicCart}"><a ng-click="onOptionClick('publicCart')" href="javascript:void(0);">Public cart</a></li>
                 <li ng-show="checkUserLoggedIn()" ng-class="{active: renderPagesObj.login}"><a ng-click="onOptionClick('login')" href="javascript:void(0);">Login</a></li>
                 <li ng-show="checkUserLoggedIn()" ng-class="{active: renderPagesObj.register}"><a ng-click="onOptionClick('register')" href="javascript:void(0);">Register</a></li>
                 <li ng-show="!checkUserLoggedIn()" ng-class="{active: renderPagesObj.productCreate}"><a ng-click="onOptionClick('productCreate')" href="javascript:void(0);">Create item</a></li>

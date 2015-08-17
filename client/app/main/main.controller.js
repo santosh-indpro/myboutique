@@ -30,6 +30,7 @@ angular.module('myboutiqueApp')
             productDetails: false,
             productCreate: false,
             cartList: false,
+            publicCart: false,
             orderList: false
         };
 
