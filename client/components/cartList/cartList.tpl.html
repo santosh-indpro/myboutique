@@ -45,6 +45,10 @@
                         {{ userInfo.fullname }}
                     </li>
                     <li>
+                        <label>Mobile number:</label>
+                        {{ userInfo.mobile }}
+                    </li>
+                    <li>
                         <label>Address Line 1:</label>
                         <input ng-model="orderInfo.addressL1" type="text" placeholder="Flat/House No, Floor, Building ">
                     </li>
@@ -63,10 +67,6 @@
                     <li>
                         <label>Deal description:</label>
                         <textarea ng-model="orderInfo.dealDesc"></textarea>
-                    </li>
-                    <li>
-                        <label>Mobile number:</label>
-                        {{ userInfo.mobile }}
                     </li>
                 </ul>
                   <span class="textH">

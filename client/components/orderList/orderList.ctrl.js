@@ -6,22 +6,20 @@ angular.module('orderList.ctrl', [])
         $scope.orderListCollection = [];
 
         loadOrders();
-
-        function loadOrders(){
+        function loadOrders() {
             $http.get(''.url('/api/products')).success(function(productListCollection) {
                 productsCollection = productListCollection;
-                $http.get(''.url('/api/transactions/user-id/' + $scope.userInfo._id)).success(function(orderListCollection) {
+                $http.get(''.url('/api/transactions/owner-id/' + $scope.userInfo._id)).success(function(orderListCollection) {
+                    console.log("orderListCollection : ", orderListCollection);
                     angular.forEach(orderListCollection, function(orderInfo, orderKey) {
-                        angular.forEach(orderInfo.productsList, function(productsListInfo, orderKey) {
-                            angular.forEach(productsCollection, function(productInfo, productKey) {
-                                if(productsListInfo.productID === productInfo._id){
-                                    orderListCollectionModified.push({
-                                        productInfo: productInfo,
-                                        productOrderInfo: productsListInfo,
-                                        transactionInfo: orderInfo
-                                    });
-                                }
-                            });
+                        angular.forEach(productsCollection, function(productInfo, productKey) {
+                            if(orderInfo.prdInfo.productID === productInfo._id){
+                                orderListCollectionModified.push({
+                                    productInfo: productInfo,
+                                    productOrderInfo: orderInfo.prdInfo,
+                                    transactionInfo: orderInfo.trnInfo
+                                });
+                            }
                         });
                     });
                     console.log("orderListCollectionModified : ", orderListCollectionModified);

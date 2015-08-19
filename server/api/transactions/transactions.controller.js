@@ -1,6 +1,7 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
  * GET     /transactions              ->  index
+ * GET     /transactions/owner-id/:id ->  transactionsOfOwner
  * GET     /transactions/user-id/:id  ->  transactionsByUserId
  * POST    /transactions              ->  create
  * GET     /transactions/:id          ->  show
@@ -21,6 +22,34 @@ exports.index = function(req, res) {
     addCrossDomainHeader(res);
     return res.status(200).json(transactions);
   });
+};
+
+// Get list of transactions by owner-id
+exports.transactionsOfOwner = function(req, res) {
+    // req.params.ownerId
+    Transaction.find(function (err, transactions) {
+        if(err) { return handleError(res, err); }
+
+        var trnPrdUsrArr = [];
+        if(transactions.length > 0){
+            transactions.forEach(function(trnInfo, trnKey){
+                if(trnInfo.productsList.length > 0){
+                    trnInfo.productsList.forEach(function(prdInfo, prdKey){
+                        if(prdInfo.ownerID === req.params.ownerId){
+                            trnPrdUsrArr.push({prdInfo: prdInfo, trnInfo: trnInfo});
+                        }
+                        if(trnKey === (transactions.length - 1) && prdKey === (trnInfo.productsList.length - 1)){
+                            addCrossDomainHeader(res);
+                            return res.status(200).json(trnPrdUsrArr);
+                        }
+                    });
+                }
+            });
+        } else {
+            addCrossDomainHeader(res);
+            return res.status(200).json(trnPrdUsrArr);
+        }
+    });
 };
 
 // Get list of transactions by user-id

@@ -11,7 +11,6 @@ angular.module('myboutiqueApp', [
   .config(function ($stateProvider, $urlRouterProvider) {
 
     if( window.location.href.indexOf('public-view') > -1 ){
-        alert(111);
         $urlRouterProvider.otherwise('/public-view');
     }else{
         $urlRouterProvider.otherwise('/');

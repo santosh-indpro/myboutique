@@ -52,19 +52,6 @@ Thing.find({}).remove(function() {
 });*/
 
 /*Products.find({}).remove(function(){
-    Products.create(
-        {
-            userID: '',
-            name: "Test items",
-            description: "Test item description",
-            price: 100,
-            images : [],
-            location: "Test location",
-            email:"email-id@test.com",
-            datecreated: "2015-07-01",
-            publishStatus: true
-        }
-    );
 });*/
 
 /*Transactions.find({}).remove(function(){

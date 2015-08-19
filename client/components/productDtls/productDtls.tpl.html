@@ -6,9 +6,9 @@
             <div class="listContainer">
                 <div class="clearfix">
                     <div style="float: left;"><h2><span class="glyphicon glyphicon-phone-alt"></span>{{ productDetails.ownerInfo.mobile }}</h2></div>
-                    <div class="bkmrkUrl">
+                    <div ng-if="!checkUserLoggedIn()" class="bkmrkUrl">
                         <!-- Popover for public URL -->
-                        <span data-toggle="popover" data-placement="top" data-content="{{ clientAppConfiguration.serverApiBaseURL + '/public-view/' + productDetails._id }}" ng-popover="myPopover">
+                        <span data-toggle="popover" data-placement="top" data-content="{{ clientAppConfiguration.serverApiBaseURL + '/public-view?id=' + productDetails._id }}" ng-popover="myPopover">
                             <img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/star.png' }}" />
                         </span>
                     </div>

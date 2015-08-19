@@ -34,7 +34,8 @@ angular.module('cartList.ctrl', [])
             }
 
             placeOrderObj = {
-                userID: $rootScope.userInfo._id,
+                orderSenderFullname: $scope.userInfo.fullname,
+                orderSenderMobile: $scope.userInfo.mobile,
                 addressL1: $scope.orderInfo.addressL1,
                 addressL2: $scope.orderInfo.addressL2,
                 city: $scope.orderInfo.city,

@@ -31,7 +31,11 @@
                 <ul>
                     <li>
                         <label>Full name:</label>
-                        <input ng-model="userInfo.fullname" type="text">
+                        <input ng-model="orderInfo.orderSenderFullname" type="text">
+                    </li>
+                    <li>
+                        <label>Mobile number:</label>
+                        <input ng-model="orderInfo.orderSenderMobile" type="number">
                     </li>
                     <li>
                         <label>Address Line 1:</label>
@@ -52,10 +56,6 @@
                     <li>
                         <label>Deal description:</label>
                         <textarea ng-model="orderInfo.dealDesc"></textarea>
-                    </li>
-                    <li>
-                        <label>Mobile number:</label>
-                        <input ng-model="userInfo.mobile" type="text">
                     </li>
                 </ul>
                   <span class="textH">

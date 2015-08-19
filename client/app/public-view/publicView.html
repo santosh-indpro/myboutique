@@ -1,1 +1,10 @@
-<h1>Test do test for you.</h1>
+<ng-ui-header></ng-ui-header>
+
+<ng-login ng-if="renderPagesObj.login"></ng-login>
+<ng-register ng-if="renderPagesObj.register"></ng-register>
+<ng-product-list ng-if="renderPagesObj.productList"></ng-product-list>
+<ng-product-dtls ng-if="renderPagesObj.productDetails"></ng-product-dtls>
+<ng-product-create ng-if="renderPagesObj.productCreate"></ng-product-create>
+<ng-cart-list ng-if="renderPagesObj.cartList"></ng-cart-list>
+<ng-public-cart ng-if="renderPagesObj.publicCart"></ng-public-cart>
+<ng-order-list ng-if="renderPagesObj.orderList"></ng-order-list>

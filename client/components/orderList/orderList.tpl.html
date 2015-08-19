@@ -16,12 +16,12 @@
                 </div><!-- //productImgH -->
                 <div class="addressH">
                     <h3>Address</h3>
-                    <p>{{ userInfo.fullname }}</p>
+                    <p>{{ productTrans.transactionInfo.orderSenderFullname }}</p>
                     <p>{{ productTrans.transactionInfo.addressL1 }}</p>
                     <p>{{ productTrans.transactionInfo.addressL2 }}</p>
                     <p>{{ productTrans.transactionInfo.city }}</p>
                     <p>{{ productTrans.transactionInfo.state }}</p>
-                    <p><span>Mobile</span>{{ userInfo.mobile }}</p>
+                    <p><span>Mobile</span>{{ productTrans.transactionInfo.orderSenderMobile }}</p>
                     <h3>Order date</h3>
                     <p>{{ productTrans.productOrderInfo.orderDate | date : "MMM d, yyyy" }}</p>
                     <h3>Deal description</h3>

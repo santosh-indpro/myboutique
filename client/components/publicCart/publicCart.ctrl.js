@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('publicCart.ctrl', [])
-    .controller('PublicCartController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    .controller('PublicCartController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
+        var qryStr = $window.location.search,
+            qryStrId = '?id=',
+            productId = qryStr.slice(qryStrId.length);
 
-        var productId = '55cb14ecfdfeff94148c07c6';
+        console.log("PrdId : ",productId);
+
         getProductDetailsById(productId);
         function getProductDetailsById(prdId){
             $rootScope.cartListing = [];
@@ -35,7 +39,8 @@ angular.module('publicCart.ctrl', [])
             }
 
             placeOrderObj = {
-                userID: '',
+                orderSenderFullname: $scope.orderInfo.orderSenderFullname,
+                orderSenderMobile: $scope.orderInfo.orderSenderMobile,
                 addressL1: $scope.orderInfo.addressL1,
                 addressL2: $scope.orderInfo.addressL2,
                 city: $scope.orderInfo.city,
@@ -49,15 +54,15 @@ angular.module('publicCart.ctrl', [])
             $rootScope.cartListing = [];
 
             console.log("Place Order info : ", placeOrderObj);
-            $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
+            //$rootScope.$broadcast('onNavigationLinkClicked', 'productList');
 
             // Place order to DB
-            /*$http.post(''.url('/api/transactions/'), placeOrderObj).success(function(status) {
+            $http.post(''.url('/api/transactions/'), placeOrderObj).success(function(status) {
                 console.log('Success - ',status);
                 $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
             }).error(function(status) {
                 console.log('Error - ',status);
-            });*/
+            });
 
         };
 
