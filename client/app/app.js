@@ -8,11 +8,15 @@ angular.module('myboutiqueApp', [
   'ui.bootstrap',
   'ui.components'
 ])
-  .config(function ($stateProvider, $urlRouterProvider /*, $locationProvider */) {
-    $urlRouterProvider.otherwise('/');
+  .config(function ($stateProvider, $urlRouterProvider) {
 
-    //TODO: Need to configure the location provider if accessing app in browser or we may need to remove this.
-    //$locationProvider.html5Mode(true);
+    if( window.location.href.indexOf('public-view') > -1 ){
+        alert(111);
+        $urlRouterProvider.otherwise('/public-view');
+    }else{
+        $urlRouterProvider.otherwise('/');
+    }
+
   }).directive('ngFastClick', function () {
 
         function link(scope, element, attrs) {
@@ -31,7 +35,7 @@ angular.module('myboutiqueApp', [
 
 var clientAppConfiguration = {
     'runningAsApp' : true,
-    'serverApiBaseURL' : 'http://192.168.1.134:3000'
+    'serverApiBaseURL' : 'http://192.168.1.65:3000'
 };
 var cookieKey = 'MyBtqCk';
 
