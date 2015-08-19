@@ -15,4 +15,12 @@ angular.module('productList.ctrl', [])
             $rootScope.$broadcast('onGetProductDetailsById', productId);
         };
 
+        $scope.redirectToLogin = function(){
+            $rootScope.$broadcast('onNavigationLinkClicked', 'login');
+        };
+
+        $scope.redirectToCreateItem = function(){
+            $rootScope.$broadcast('onNavigationLinkClicked', 'productCreate');
+        };
+
     }]);

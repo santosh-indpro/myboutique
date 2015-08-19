@@ -43,4 +43,21 @@ angular.module('myboutiqueApp')
             link: link
         };
 
+    }).directive('ngPopover', function () {
+
+        function link(scope, element, attrs) {
+
+            $(element).attr('id', attrs['ngPopover']);
+
+            $(function () {
+                $("#"+attrs['ngPopover']).popover();
+            })
+
+        }
+
+        return {
+            restrict: "AE",
+            link: link
+        };
+
     });

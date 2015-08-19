@@ -13,7 +13,8 @@ angular.module('register.ctrl', [])
                 if(!response.status){
                     $scope.registerFailStatus = true;
                 } else {
-                    $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
+                    $rootScope.$broadcast('onNavigationLinkClicked', 'login');
+                    $rootScope.$broadcast('onRegisterSuccess');
                 }
             }).error(function(status) {
                 console.log('Error - ',status);

@@ -22,6 +22,12 @@ angular.module('myboutiqueApp')
             return angular.equals({}, $rootScope.userInfo);
         };
 
+        // Register Success Msg
+        $rootScope.registerSuccessMsg = false;
+        $scope.$on('onRegisterSuccess', function () {
+            $rootScope.registerSuccessMsg = true;
+        });
+
         // Initialize page render object
         $scope.renderPagesObj = {
             login: false,

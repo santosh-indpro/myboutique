@@ -4,7 +4,15 @@
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
             <div class="listContainer">
-                <h2><span class="glyphicon glyphicon-phone-alt"></span>{{ productDetails.ownerInfo.mobile }}</h2>
+                <div class="clearfix">
+                    <div style="float: left;"><h2><span class="glyphicon glyphicon-phone-alt"></span>{{ productDetails.ownerInfo.mobile }}</h2></div>
+                    <div class="bkmrkUrl">
+                        <!-- Popover for public URL -->
+                        <span data-toggle="popover" data-placement="top" data-content="{{ clientAppConfiguration.serverApiBaseURL + '/public-view/' + productDetails._id }}" ng-popover="myPopover">
+                            <img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/star.png' }}" />
+                        </span>
+                    </div>
+                </div>
                 <div class="timeAndLocationH clearfix">
                     <span class="locationH">@ {{ productDetails.location }}</span>
                     <span class="postedTime">{{ productDetails.datecreated | date : "MMM d, yyyy"  }}</span>

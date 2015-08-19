@@ -35,7 +35,7 @@ angular.module('myboutiqueApp', [
 
 var clientAppConfiguration = {
     'runningAsApp' : true,
-    'serverApiBaseURL' : 'http://192.168.1.65:3000'
+    'serverApiBaseURL' : 'http://192.168.1.134:3000'
 };
 var cookieKey = 'MyBtqCk';
 

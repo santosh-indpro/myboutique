@@ -3,7 +3,9 @@
     <div class="row">
 
         <div ng-if="productsCollection.length === 0" class="col-md-4 col-sm-6 col-xs-12">
-            <h2>No items</h2>
+            <span ng-if="checkUserLoggedIn()" ng-click="redirectToLogin()">+</span>
+            <span ng-if="!checkUserLoggedIn()" ng-click="redirectToCreateItem()">+</span>
+            <h2>Click the [+] sign, to create an item.</h2>
         </div>
 
         <div ng-if="productsCollection.length > 0" ng-repeat="product in productsCollection" class="col-md-4 col-sm-6 col-xs-12">
