@@ -17,6 +17,7 @@ angular.module('publicCart.ctrl', [])
         }
 
         $scope.showPublicOrder = false;
+        $scope.showSuccessPublicOrder = false;
         $scope.togglePublicOrderSection = function(){
             $scope.showPublicOrder = !$scope.showPublicOrder;
             $scope.orderInfo = {};
@@ -54,12 +55,12 @@ angular.module('publicCart.ctrl', [])
             $rootScope.cartListing = [];
 
             console.log("Place Order info : ", placeOrderObj);
-            //$rootScope.$broadcast('onNavigationLinkClicked', 'productList');
 
             // Place order to DB
             $http.post(''.url('/api/transactions/'), placeOrderObj).success(function(status) {
                 console.log('Success - ',status);
-                $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
+                $scope.showPublicOrder = false;
+                $scope.showSuccessPublicOrder = true;
             }).error(function(status) {
                 console.log('Error - ',status);
             });

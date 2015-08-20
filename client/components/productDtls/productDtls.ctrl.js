@@ -8,4 +8,7 @@ angular.module('productDtls.ctrl', [])
             $rootScope.$broadcast('onNavigationLinkClicked', 'cartList');
         };
 
+        $scope.backToProductsList = function() {
+            $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
+        }
     }]);

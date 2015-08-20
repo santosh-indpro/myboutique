@@ -3,8 +3,8 @@
     <div ng-if="cartShow" class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
-            <div ng-if="cartListing.length === 0" class="col-md-4 col-sm-6 col-xs-12">
-                <h2>No items</h2>
+            <div ng-if="cartListing.length === 0" class="alertMsg">
+                <h2>Cart is empty.</h2>
             </div>
 
             <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="orderDetailsContainer clearfix">

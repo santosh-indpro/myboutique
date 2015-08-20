@@ -2,6 +2,10 @@
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
+            <div ng-if="showSuccessPublicOrder" class="alert alert-success" role="alert">
+                Order placed successfully.
+            </div>
+
             <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="orderDetailsContainer clearfix">
                 <div class="productImgH">
                     <img src="{{  clientAppConfiguration.serverApiBaseURL + '/' + cartProduct.images[0] }}"/>
@@ -16,7 +20,7 @@
                     </div><!-- //priceH -->
                 </div><!-- //addressH -->
             </div><!-- //orderDetailsContainer -->
-            <div class="publicOrderSectionLink">
+            <div ng-if="cartListing.length > 0" class="publicOrderSectionLink">
                 <a ng-click="togglePublicOrderSection()" href="javascript: void(0);">Click here to Place order</a>
             </div>
 

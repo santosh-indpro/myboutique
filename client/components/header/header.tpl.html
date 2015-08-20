@@ -1,6 +1,7 @@
 <header ng-controller="HeaderController">
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
+
+        <div ng-if="!renderPagesObj.publicCart" class="navbar-header">
             <div class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <button type="button" class="menu-btn">
                     <span class="icon-bar"></span>
@@ -15,9 +16,9 @@
                   </span>
             </a>
         </div>
-        <div class="navbar-collapse collapse" ng-main-menu>
+
+        <div ng-if="!renderPagesObj.publicCart" class="navbar-collapse collapse" ng-main-menu>
             <ul class="nav navbar-nav">
-                <!--<li ng-class="{active: renderPagesObj.publicCart}"><a ng-click="onOptionClick('publicCart')" href="javascript:void(0);">Public cart</a></li>-->
                 <li ng-show="checkUserLoggedIn()" ng-class="{active: renderPagesObj.login}"><a ng-click="onOptionClick('login')" href="javascript:void(0);">Login</a></li>
                 <li ng-show="checkUserLoggedIn()" ng-class="{active: renderPagesObj.register}"><a ng-click="onOptionClick('register')" href="javascript:void(0);">Register</a></li>
                 <li ng-show="!checkUserLoggedIn()" ng-class="{active: renderPagesObj.productCreate}"><a ng-click="onOptionClick('productCreate')" href="javascript:void(0);">Create item</a></li>
@@ -26,6 +27,19 @@
                 <li ng-show="!checkUserLoggedIn()"><a ng-click="logoutUser('productList')" href="javascript:void(0);">Logout</a></li>
             </ul>
         </div>
+
+        <!-- Load for public cart only -->
+        <div ng-if="renderPagesObj.publicCart">
+            <div class="navbar-toggle">
+                <button type="button" class="menu-btn">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0);">My Boutique</a>
+            </div>
+        </div>
+
     </nav>
 </header>
 

@@ -51,6 +51,9 @@ angular.module('myboutiqueApp')
 
             $(function () {
                 $("#"+attrs['ngPopover']).popover();
+                /*$('body').on('click', function(){
+                    $("#"+attrs['ngPopover']).popover('hide');
+                });*/
             })
 
         }
