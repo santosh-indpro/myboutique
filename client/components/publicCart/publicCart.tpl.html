@@ -31,6 +31,11 @@
     <div ng-if="showPublicOrder" class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
+            <div ng-if="submitDataError" class="errMsg">
+                <span class="glyphicon glyphicon-remove-circle"></span>
+                <span>All fields are mandatory!</span>
+            </div>
+
             <div class="placeOrderH">
                 <ul>
                     <li>

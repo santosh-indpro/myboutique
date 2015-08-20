@@ -3,6 +3,16 @@
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
+            <div ng-if="submitDataError" class="errMsg">
+                <span class="glyphicon glyphicon-remove-circle"></span>
+                <span>All fields are mandatory!</span>
+            </div>
+
+            <div ng-if="registerFailStatus" class="errMsg">
+                <span class="glyphicon glyphicon-remove-circle"></span>
+                <span>User already exists!</span>
+            </div>
+
             <div class="placeOrderH">
                 <ul>
                     <li>
@@ -18,12 +28,6 @@
                         <input ng-model="registerInfo.fullname" type="text">
                     </li>
                 </ul>
-                  <span ng-if="registerFailStatus" class="textH">
-                      <span class="glyphicon glyphicon-info-sign"></span>
-                      <span>
-                          User already exists!
-                      </span>
-                  </span>
             </div>
 
         </div><!-- //col-md-4 col-sm-6 col-xs-12 -->

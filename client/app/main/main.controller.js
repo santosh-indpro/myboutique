@@ -44,6 +44,8 @@ angular.module('myboutiqueApp')
         $rootScope.imageAdded = [];
         // Initialize cart list
         $rootScope.cartListing = [];
+        // Initialize submit data
+        $rootScope.submitDataError = false;
 
         // Detect phone
         $rootScope.onPhone = false;
