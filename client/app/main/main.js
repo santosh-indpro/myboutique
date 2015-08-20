@@ -50,10 +50,18 @@ angular.module('myboutiqueApp')
             $(element).attr('id', attrs['ngPopover']);
 
             $(function () {
+                // Activate popover
                 $("#"+attrs['ngPopover']).popover();
-                /*$('body').on('click', function(){
-                    $("#"+attrs['ngPopover']).popover('hide');
-                });*/
+                // Close popover when clicking outside
+                $('body').on('click', function (e) {
+                    $("#"+attrs['ngPopover']).each(function () {
+                        //the 'is' for buttons that trigger popups
+                        //the 'has' for icons within a button that triggers a popup
+                        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                            $(this).popover('hide');
+                        }
+                    });
+                });
             })
 
         }
