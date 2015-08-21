@@ -11,7 +11,7 @@ angular.module('productList.ctrl', [])
             var modified_productsUsersCollection = [];
             $(productsUsersCollection).each(function(i,v){
 
-                v.productInfo.description_dispaly = v.productInfo.description.substring(0, 150) + "....";
+                v.productInfo.description_dispaly = v.productInfo.description.substring(0, 50) + "....";
                 modified_productsUsersCollection.push(v);
             });
 

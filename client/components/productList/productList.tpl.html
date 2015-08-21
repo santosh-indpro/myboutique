@@ -1,11 +1,11 @@
-<div class="container" ng-controller="ProductListController">
+<div class="container" ng-controller="ProductListController" ng-cloak>
 
     <div class="row">
 
-        <div ng-if="productsCollection.length === 0" class="plusCreateItem">
+        <div ng-if="productsCollection.length == 0" class="plusCreateItem">
             <span ng-if="checkUserLoggedIn()" ng-click="redirectToLogin()"><img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/add.png' }}" /></span>
             <span ng-if="!checkUserLoggedIn()" ng-click="redirectToCreateItem()"><img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/add.png' }}" /></span>
-            <h2>Click the 'plus' sign above, to create an item.</h2>
+            <h2>Click the '+' sign above, to create an item.</h2>
         </div>
 
         <div ng-if="productsCollection.length > 0" ng-repeat="product in productsCollection" class="col-md-4 col-sm-6 col-xs-12">
