@@ -14,7 +14,9 @@ angular.module('login.ctrl', [])
                     if(response.length === 0){
                         $scope.loginFailStatus = true;
                     } else {
-                        $rootScope.userInfo = saveInCookie(response[0]);
+                        $rootScope.userInfo = response[0];
+                        //saveInCookie(response[0]);
+                        console.log("$rootScope.userInfo", $rootScope.userInfo);
                         $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
                     }
                 }).error(function(status) {

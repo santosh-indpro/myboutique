@@ -6,15 +6,20 @@ angular.module('myboutiqueApp')
         // Client App config
         $rootScope.clientAppConfiguration = clientAppConfiguration;
 
+        initUserInfo();
+        function initUserInfo(){
+            $rootScope.userInfo = {};
+        }
+
         // Check Cookie
-        checkCookie();
+        //checkCookie();
         function checkCookie(){
             if($cookies.getObject(cookieKey) === undefined || $cookies.getObject(cookieKey) === null){
                 $rootScope.userInfo = {};
             } else {
                 $rootScope.userInfo = $cookies.getObject(cookieKey);
             }
-            //console.log("$cookies get : ", $rootScope.userInfo);
+            console.log("$cookies get : ", $rootScope.userInfo);
         }
 
         // Check User login

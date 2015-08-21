@@ -6,15 +6,24 @@ angular.module('myboutiqueApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ui.components'
-])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  'ui.components',
+  'reCAPTCHA'
+
+]).config(function ($stateProvider, $urlRouterProvider, reCAPTCHAProvider) {
 
     if( window.location.href.indexOf('public-view') > -1 ){
         $urlRouterProvider.otherwise('/public-view');
     }else{
         $urlRouterProvider.otherwise('/');
     }
+
+        // required: please use your own key :)
+        reCAPTCHAProvider.setPublicKey('6LeIxwETAAAAAIQgt52lrhcTzN8zWVmf059FEi8b');
+
+        // optional: gets passed into the Recaptcha.create call
+        reCAPTCHAProvider.setOptions({
+            theme: 'clean'
+        });
 
   }).directive('ngFastClick', function () {
 
@@ -34,9 +43,10 @@ angular.module('myboutiqueApp', [
 
 var clientAppConfiguration = {
     'runningAsApp' : true,
-    'serverApiBaseURL' : 'http://192.168.1.134:3000'
+    'serverApiBaseURL' : 'http://dev1.indpro.se:5000'
 };
 var cookieKey = 'MyBtqCk';
+var userInfo = {};
 
 //Method : extending the String type for format function support.
 String.prototype.format = function () {

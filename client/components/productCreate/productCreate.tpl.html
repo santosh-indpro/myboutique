@@ -29,10 +29,12 @@
                     <li>
                         <label>Upload photo:</label>
                         <!-- Start: Web upload-->
-                        <div ng-if="!onPhone" ng-drop-zone="uploadImagesDZ"></div>
+                        <!--<div ng-if="!onPhone" ng-drop-zone="uploadImagesDZ"></div>-->
+                        <div ng-drop-zone="uploadImagesDZ"></div>
                         <!-- End: Web upload-->
                         <!-- Start: Mobile upload-->
-                        <div ng-if="onPhone">
+
+                       <!-- <div ng-if="onPhone">
                             <button ng-click="onAddImage()">Add image</button>
                             <div class="clearfix">
                                 <div ng-repeat="img in imageAdded">
@@ -45,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- End: Mobile upload-->
                     </li>
                     <li>

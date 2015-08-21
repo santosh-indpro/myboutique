@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {
-    "body-parser": "^1.13.3",
-    "client-sessions": "^0.7.0",
+    "angular-recaptcha": "^1.0.1",
+    "body-parser": "^1.13.2",
     "composable-middleware": "^0.3.0",
     "compression": "~1.0.1",
     "connect-mongo": "^0.8.1",
@@ -18,8 +18,7 @@
     "method-override": "^2.3.4",
     "mongoose": "~4.0.3",
     "morgan": "~1.0.0",
-    "serve-favicon": "~2.0.1",
-    "visualcaptcha": "^0.1.1"
+    "serve-favicon": "~2.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

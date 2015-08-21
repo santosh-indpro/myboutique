@@ -7,7 +7,15 @@ angular.module('productList.ctrl', [])
 
         $http.get(''.url('/api/products/with-users')).success(function(productsUsersCollection) {
             console.log("Products with users : ", productsUsersCollection);
-            $scope.productsCollection = productsUsersCollection;
+
+            var modified_productsUsersCollection = [];
+            $(productsUsersCollection).each(function(i,v){
+
+                v.productInfo.description_dispaly = v.productInfo.description.substring(0, 150) + "....";
+                modified_productsUsersCollection.push(v);
+            });
+
+            $scope.productsCollection = modified_productsUsersCollection;
         });
 
         $scope.showProductDetails = function(pageToRedirect, productId){

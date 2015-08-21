@@ -9,7 +9,7 @@ angular.module('header.ctrl', [])
 
         $scope.logoutUser = function(args){
             // Remove cookie
-            $cookies.remove(cookieKey);
+            //$cookies.remove(cookieKey);
             // Reset User info
             $rootScope.userInfo = {};
             // Redirect to home page

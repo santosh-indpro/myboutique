@@ -67,12 +67,20 @@
                         <textarea ng-model="orderInfo.dealDesc"></textarea>
                     </li>
                     <li>
-                        <div>
-                            <form id="captchaForm" class="frm-sample" action="try" method="post">
-                                <div id="status-message"></div>
-                                <div id="sample-captcha"></div>
-                            </form>
-                        </div>
+
+                        <div id="captcha_container" class="g-recaptcha" data-sitekey=""></div>
+                        <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
+                        <script type='text/javascript'>
+                            var captchaContainer = null;
+                            var loadCaptcha = function() {
+                                captchaContainer = grecaptcha.render('captcha_container', {
+                                    'sitekey' : '6LfqngsTAAAAAANHOl0NX5nRw2Xab3Ag-6GW31zE',
+                                    'callback' : function(response) {
+                                        document.getElementById('xxx').disabled = false;
+                                    }
+                                });
+                            };
+                        </script>
                     </li>
                 </ul>
                   <span class="textH">
@@ -88,7 +96,7 @@
 
     <div ng-if="showPublicOrder" class="navbar-fixed-bottom">
         <div class="container-fluid text-center footer">
-            <button ng-click="addPublicOrder()" type="button" class="btnV1">
+            <button ng-click="addPublicOrder()" type="button" class="btnV1" id="xxx" disabled="disabled">
                 <span class="glyphicon glyphicon-map-marker"></span>
                 Place Order
             </button>
