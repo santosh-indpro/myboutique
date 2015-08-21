@@ -3,8 +3,8 @@
     <div class="row">
 
         <div ng-if="productsCollection.length === 0" class="plusCreateItem">
-            <span ng-if="checkUserLoggedIn()" ng-click="redirectToLogin()"><img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/plus_sign2.gif' }}" /></span>
-            <span ng-if="!checkUserLoggedIn()" ng-click="redirectToCreateItem()"><img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/plus_sign2.gif' }}" /></span>
+            <span ng-if="checkUserLoggedIn()" ng-click="redirectToLogin()"><img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/add.png' }}" /></span>
+            <span ng-if="!checkUserLoggedIn()" ng-click="redirectToCreateItem()"><img src="{{ clientAppConfiguration.serverApiBaseURL + '/assets/images/add.png' }}" /></span>
             <h2>Click the 'plus' sign above, to create an item.</h2>
         </div>
 
