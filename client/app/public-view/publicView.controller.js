@@ -1,6 +1,9 @@
 angular.module('myboutiqueApp')
     .controller('publicViewCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
 
+        // Client App config
+        $rootScope.clientAppConfiguration = clientAppConfiguration;
+
         // Open public cart page
         $scope.renderPagesObj = {
             login: false,

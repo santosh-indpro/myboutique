@@ -8,7 +8,31 @@
 
             <div ng-if="cartListing.length > 0" ng-repeat="cartProduct in cartListing" class="orderDetailsContainer clearfix">
                 <div class="productImgH">
-                    <img src="{{  clientAppConfiguration.serverApiBaseURL + '/' + cartProduct.images[0] }}"/>
+
+                    <div id="myCarousel" class="carousel slide" ng-carousel-init>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li ng-repeat="images in publicPrdImagesForCarousel" ng-class="{'active': images.first }" data-target="#myCarousel" data-slide-to="{{ images.key }}" ng-non-bindable></li>
+                        </ol>
+
+                        <!-- Wrapper for Slides -->
+                        <div class="carousel-inner">
+                            <div ng-repeat="images in publicPrdImagesForCarousel" ng-class="{ 'item': true, 'active': images.first }">
+                                <!-- Set the first background image using inline CSS below. -->
+                                <div class="fill" style="background-image:url('{{ images.imageUrl }}');"></div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev" ng-non-bindable>
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next" ng-non-bindable>
+                            <span class="icon-next"></span>
+                        </a>
+
+                    </div>
+
                 </div><!-- //productImgH -->
                 <div class="textH">
                     <h1>{{ cartProduct.name }}</h1>

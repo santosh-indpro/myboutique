@@ -11,8 +11,17 @@ angular.module('publicCart.ctrl', [])
         getProductDetailsById(productId);
         function getProductDetailsById(prdId){
             $rootScope.cartListing = [];
+            $scope.publicPrdImagesForCarousel = [];
             $http.get(''.url('/api/products/' + prdId)).success(function(productDetails) {
                 $rootScope.cartListing.push(productDetails);
+                // Populate product images for carousel
+                angular.forEach(productDetails.images, function(value, key) {
+                    $scope.publicPrdImagesForCarousel.push({
+                        key: key,
+                        imageUrl: $rootScope.clientAppConfiguration.serverApiBaseURL + '/' + value,
+                        first: (key === 0)?(true):(false)
+                    });
+                });
             });
         }
 
