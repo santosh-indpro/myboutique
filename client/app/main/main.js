@@ -16,7 +16,18 @@ angular.module('myboutiqueApp')
             // Add dropzone
             $(element).html('<div class="dropzone" id="' + attrs.ngDropZone + '"></div>');
             // Init Dropzone
-            var myDropzone = new Dropzone("div#" + attrs.ngDropZone, { url: "/images"});
+            var myDropzone = new Dropzone("div#" + attrs.ngDropZone,
+                {
+                    url: "/images",
+                    accept: function(file, done) {
+                        console.log("Checking uploaded file-type : ",file);
+                        if (file.type != "image/jpeg" || file.type != "image/png" || file.type != "image/gif" || file.type != "image/bmp") {
+                            done();
+                        }
+                        else { done("Error! Files of this type are not accepted"); }
+                    }
+                }
+            );
             // After upload to server
             myDropzone.on("success", function(param1, uploadedfileName) {
                 scope.$root.imageAdded.push(uploadedfileName);
@@ -51,7 +62,13 @@ angular.module('myboutiqueApp')
 
             $(function () {
                 // Activate popover
-                $("#"+attrs['ngPopover']).popover();
+                $("#"+attrs['ngPopover']).popover({
+                    html: true,
+                    placement: 'top',
+                    content: function() {
+                        return $('#popover-content'); //<-- Remove .html()
+                    }
+                });
                 // Close popover when clicking outside
                 $('body').on('click', function (e) {
                     $("#"+attrs['ngPopover']).each(function () {
@@ -61,6 +78,10 @@ angular.module('myboutiqueApp')
                             $(this).popover('hide');
                         }
                     });
+                });
+                // Select URL
+                $('textarea.prdPublicURL').on('click', function () {
+                    $(this).select();
                 });
             })
 
