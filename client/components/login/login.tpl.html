@@ -7,25 +7,20 @@
                 <strong>Success!</strong> Registration successful.
             </div>
 
-            <div ng-if="submitDataError" class="errMsg">
-                <span class="glyphicon glyphicon-remove-circle"></span>
-                <span>All fields are mandatory!</span>
-            </div>
-
             <div ng-if="loginFailStatus" class="errMsg">
                 <span class="glyphicon glyphicon-remove-circle"></span>
                 <span>Login Failed!</span>
             </div>
 
-            <div class="placeOrderH">
+            <div id="loginForm" class="placeOrderH">
                 <ul>
                     <li>
                         <label>Mobile:</label>
-                        <input ng-model="loginInfo.mobile" type="number">
+                        <input ng-model="loginInfo.mobile" type="number" data-error="Please enter mobile number">
                     </li>
                     <li>
                         <label>Password:</label>
-                        <input ng-model="loginInfo.password" type="password">
+                        <input ng-model="loginInfo.password" type="password" data-error="Please enter Password">
                     </li>
                 </ul>
             </div>
@@ -34,7 +29,7 @@
     </div><!-- //row -->
     <div class="navbar-fixed-bottom">
         <div class="container-fluid text-center footer">
-            <button ng-click="checkLoginInfo()" type="button" class="btnV1">
+            <button formId="loginForm" ng-validate="checkLoginInfo" type="button" class="btnV1">
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 Login
             </button>

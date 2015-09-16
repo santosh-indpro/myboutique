@@ -24,7 +24,7 @@
                     <p><span>Mobile</span>{{ productTrans.transactionInfo.orderSenderMobile }}</p>
                     <h3>Order date</h3>
                     <p>{{ productTrans.productOrderInfo.orderDate | date : "MMM d, yyyy" }}</p>
-                    <h3>Deal description</h3>
+                    <h3 ng-if="productTrans.transactionInfo.dealDesc.length > 0">Deal description</h3>
                     <p>{{ productTrans.transactionInfo.dealDesc }}</p>
                 </div><!-- //addressH -->
 

@@ -38,12 +38,7 @@
     <div ng-if="!cartShow" class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
-            <div ng-if="submitDataError" class="errMsg">
-                <span class="glyphicon glyphicon-remove-circle"></span>
-                <span>All fields are mandatory!</span>
-            </div>
-
-            <div class="placeOrderH">
+            <div id="addPlaceOrderForm" class="placeOrderH">
                 <ul>
                     <li>
                         <label>Full name:</label>
@@ -55,7 +50,7 @@
                     </li>
                     <li>
                         <label>Address Line 1:</label>
-                        <input ng-model="orderInfo.addressL1" type="text" placeholder="Flat/House No, Floor, Building ">
+                        <input ng-model="orderInfo.addressL1" type="text" placeholder="Flat/House No, Floor, Building " data-error="Please enter a Address">
                     </li>
                     <li>
                         <label>Address Line 2:</label>
@@ -63,11 +58,11 @@
                     </li>
                     <li>
                         <label>Town/City:</label>
-                        <input ng-model="orderInfo.city" type="text">
+                        <input ng-model="orderInfo.city" type="text" data-error="Please enter a Town/City">
                     </li>
                     <li>
                         <label>State:</label>
-                        <input ng-model="orderInfo.state" type="text">
+                        <input ng-model="orderInfo.state" type="text" data-error="Please enter a State">
                     </li>
                     <li>
                         <label>Deal description:</label>
@@ -86,7 +81,7 @@
     </div><!-- //row -->
     <div ng-if="!cartShow" class="navbar-fixed-bottom">
         <div class="container-fluid text-center footer">
-            <button ng-click="addPlaceOrder()" type="button" class="btnV1">
+            <button formId="addPlaceOrderForm" ng-validate="addPlaceOrder" type="button" class="btnV1">
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 Submit
             </button>

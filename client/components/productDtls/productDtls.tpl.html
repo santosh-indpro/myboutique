@@ -55,7 +55,7 @@
                     <h1>{{ productDetails.name }}</h1>
                     <h1>$ {{ productDetails.price }}</h1>
                 </div><!-- //productDetail -->
-                <p>{{ productDetails.description }}</p>
+                <p ng-if="productDetails.description.length > 0">{{ productDetails.description }}</p>
             </div><!-- //listContainer -->
 
         </div><!-- //col-md-4 col-sm-6 col-xs-12 -->

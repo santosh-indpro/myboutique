@@ -19,6 +19,7 @@ angular.module('myboutiqueApp')
             var myDropzone = new Dropzone("div#" + attrs.ngDropZone,
                 {
                     url: "/images",
+                    clickable: true,
                     accept: function(file, done) {
                         console.log("Checking uploaded file-type : ",file);
                         if (file.type != "image/jpeg" || file.type != "image/png" || file.type != "image/gif" || file.type != "image/bmp") {
@@ -85,6 +86,53 @@ angular.module('myboutiqueApp')
                 });
             })
 
+        }
+
+        return {
+            restrict: "AE",
+            link: link
+        };
+
+    }).directive('ngValidate', function () {
+
+        function link(scope, element, attrs) {
+            $(element).on('click', function () {
+                var isValid = true;
+                var formId = $(element).attr('formId'), actionFn = attrs['ngValidate'];
+
+                // Clear all errors
+                $('#'+formId).find('div.errMsg').each(function(elmId, elm){
+                    $(elm).remove();
+                });
+
+                // Validate inputs
+                $('#'+formId).find('input,textarea').each(function(elmId, elm){
+                    if( $(elm).attr('data-error') !== undefined && (!$(elm).val() || /^\s*$/.test($(elm).val())) ){
+                        isValid = false;
+                        //console.log('Error : id - %d, elm - %s, value - %s', elmId, elm, $(elm).val());
+                        $(elm).after('<div class="errMsg"><span>' + $(elm).attr('data-error') + '</span></div>');
+                    }
+                });
+
+                // Validate image upload
+                if(actionFn === 'createProduct'){
+                    var dropZoneElem = $('#uploadImagesDZ'), dropZoneErrorMsg = dropZoneElem.parent().attr('data-error');
+                    if(dropZoneErrorMsg !== undefined && scope.$root.imageAdded.length === 0){
+                        dropZoneElem.after('<div class="errMsg"><span>'+dropZoneErrorMsg+'</span></div>');
+                    } else {
+                        if(isValid){
+                            console.log('Form valid !');
+                            scope[actionFn]();
+                        }
+                    }
+                } else {
+                    if(isValid){
+                        console.log('Form valid !');
+                        scope[actionFn]();
+                    }
+                }
+
+            });
         }
 
         return {

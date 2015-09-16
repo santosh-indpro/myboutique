@@ -55,24 +55,19 @@
     <div ng-if="showPublicOrder" class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-3">
 
-            <div ng-if="submitDataError" class="errMsg">
-                <span class="glyphicon glyphicon-remove-circle"></span>
-                <span>All fields are mandatory!</span>
-            </div>
-
-            <div class="placeOrderH">
+            <div id="addPublicOrderForm" class="placeOrderH">
                 <ul>
                     <li>
                         <label>Full name:</label>
-                        <input ng-model="orderInfo.orderSenderFullname" type="text">
+                        <input ng-model="orderInfo.orderSenderFullname" type="text" data-error="Please enter Full name">
                     </li>
                     <li>
                         <label>Mobile number:</label>
-                        <input ng-model="orderInfo.orderSenderMobile" type="number">
+                        <input ng-model="orderInfo.orderSenderMobile" type="number" data-error="Please enter Mobile number">
                     </li>
                     <li>
                         <label>Address Line 1:</label>
-                        <input ng-model="orderInfo.addressL1" type="text" placeholder="Flat/House No, Floor, Building ">
+                        <input ng-model="orderInfo.addressL1" type="text" placeholder="Flat/House No, Floor, Building " data-error="Please enter Address">
                     </li>
                     <li>
                         <label>Address Line 2:</label>
@@ -80,11 +75,11 @@
                     </li>
                     <li>
                         <label>Town/City:</label>
-                        <input ng-model="orderInfo.city" type="text">
+                        <input ng-model="orderInfo.city" type="text" data-error="Please enter Town/City">
                     </li>
                     <li>
                         <label>State:</label>
-                        <input ng-model="orderInfo.state" type="text">
+                        <input ng-model="orderInfo.state" type="text" data-error="Please enter State">
                     </li>
                     <li>
                         <label>Deal description:</label>
@@ -120,7 +115,7 @@
 
     <div ng-if="showPublicOrder" class="navbar-fixed-bottom">
         <div class="container-fluid text-center footer">
-            <button ng-click="addPublicOrder()" type="button" class="btnV1" id="xxx" disabled="disabled">
+            <button formId="addPublicOrderForm" ng-validate="addPublicOrder" type="button" class="btnV1" id="xxx" disabled="disabled">
                 <span class="glyphicon glyphicon-map-marker"></span>
                 Place Order
             </button>

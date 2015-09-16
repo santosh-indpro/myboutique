@@ -18,26 +18,22 @@ angular.module('productCreate.ctrl', [])
 
         // Create Product
         $scope.createProduct = function(){
-            if($scope.productDetails.location && $scope.productDetails.name && $scope.productDetails.price && $scope.productDetails.description && $rootScope.imageAdded.length > 0){
-                $scope.submitDataError = false;
-                // Collection from Web/Mobile
-                console.log("ADDED IMAGES >>>>> ");
-                console.log($rootScope.imageAdded);
-                /*for(var i=0; i < $rootScope.imageAdded.length; i++){
-                    console.log($rootScope.imageAdded[i]);
-                }*/
+            console.log("Submitted data");
+            // Collection from Web/Mobile
+            console.log("ADDED IMAGES >>>>> ");
+            console.log($rootScope.imageAdded);
+            /*for(var i=0; i < $rootScope.imageAdded.length; i++){
+                console.log($rootScope.imageAdded[i]);
+            }*/
 
-                $scope.productDetails.images = $rootScope.imageAdded;
+            $scope.productDetails.images = $rootScope.imageAdded;
 
-                $http.post(''.url('/api/products/'), $scope.productDetails).success(function(status) {
-                    $rootScope.imageAdded = [];
-                    $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
-                }).error(function(status) {
-                    console.log('Error - ',status);
-                });
-            } else {
-                $scope.submitDataError = true;
-            }
+            $http.post(''.url('/api/products/'), $scope.productDetails).success(function(status) {
+                $rootScope.imageAdded = [];
+                $rootScope.$broadcast('onNavigationLinkClicked', 'productList');
+            }).error(function(status) {
+                console.log('Error - ',status);
+            });
         };
 
         // Mobile Upload
